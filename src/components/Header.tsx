@@ -1,4 +1,4 @@
-import React from 'react';
+// import React from 'react';
 
 const Header = () => {
   return <div className="min-h-[20vh] bg-slate-700"></div>;
