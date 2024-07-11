@@ -17,7 +17,7 @@ export const CardMusic: React.FC<{
 
   return (
     <div
-      className=" text-white flex flex-col gap-1 max-h-56 overflow-hidden cursor-pointer hover:bg-[#05208a] px-2 py-01"
+      className=" text-white flex flex-col gap-1 max-h-56 overflow-hidden cursor-pointer hover:bg-[#05208a] px-2 py-01 rounded-md"
       onClick={handleClick}
     >
       <img src={url_img} className="h-3/5 rounded-lg object-cover" />
