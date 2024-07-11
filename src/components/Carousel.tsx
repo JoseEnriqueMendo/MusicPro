@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { IoArrowForward } from 'react-icons/io5';
 import { IoArrowBack } from 'react-icons/io5';
 import { PlaylistFeatureOrCategory } from '../interface/playlist';
@@ -8,6 +9,9 @@ export const CarouselPlaylistFeature: React.FC<{
   title: string;
   dataCard: PlaylistFeatureOrCategory;
 }> = ({ title, dataCard }) => {
+  const name_proyect = import.meta.env.VITE_NAME_PAGE || '';
+
+  const navigate = useNavigate();
   const [currentIndex, setCurrentIndex] = useState(0);
   const itemsPerPage = 5;
 
@@ -23,6 +27,10 @@ export const CarouselPlaylistFeature: React.FC<{
     if (currentIndex > 0) {
       setCurrentIndex(currentIndex - 1);
     }
+  };
+
+  const handleClick = (id: string) => {
+    navigate(`${name_proyect}/playlist/${id}`);
   };
 
   return (
@@ -53,6 +61,7 @@ export const CarouselPlaylistFeature: React.FC<{
                 name={item.name}
                 id={item.id}
                 abstract={item.description}
+                handleClick={handleClick}
               />
             );
           })}

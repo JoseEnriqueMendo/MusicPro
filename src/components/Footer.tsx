@@ -1,24 +1,24 @@
-// import React from 'react'
+import React, { useState, useEffect } from 'react';
 
-const Footer = () => {
+const Footer: React.FC = () => {
+  const url_base = 'https://open.spotify.com/embed/';
+  const [id, setId] = useState('');
+  const [type, setType] = useState('');
+  //track/43DeSV93pJPT4lCZaWZ6b1 6x5Nva6cG8jSaOyq7isQNQ
+
+  useEffect(() => {
+    setId('6x5Nva6cG8jSaOyq7isQNQ');
+    setType('track');
+  }, [type]);
+
   return (
-    <div className="min-h-[10vh] bg-[#555d6a68] ">
-      {' '}
-      {/* <iframe
-            className="w-full bg-black"
-            title="Reproductor de Spotify"
-            src="https://open.spotify.com/embed/episode/1Yg7GwCEIp6VzTdcCKw9Hr"
-            height="300"
-            allow="encrypted-media"
-          ></iframe>
-    */}
-      {/* <iframe
-            className="w-full bg-black"
-            title="Repraoductor de Spotify"
-            src="https://open.spotify.com/embed/track/43DeSV93pJPT4lCZaWZ6b1"
-            height="300"
-            allow="encrypted-media"
-          ></iframe> */}
+    <div className="min-h-[10vh] max-h-[10vh] bg-gradient-to-r from-[#064BB5] to-[#040c18cd] h-full overflow-hidden ">
+      <iframe
+        className="w-full"
+        title="Reproductor de Spotify"
+        src={`${url_base}${type}/${id}`}
+        allow="encrypted-media"
+      ></iframe>
     </div>
   );
 };

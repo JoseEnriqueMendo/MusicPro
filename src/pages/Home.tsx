@@ -13,7 +13,7 @@ const Home = () => {
   }, []);
 
   const handleClick = async () => {
-    console.log(localStorage.getItem('token'));
+    // console.log(localStorage.getItem('token'));
     const result = await playlistServices.getByFeatures();
     setPlaylistFeature(result);
   };
@@ -22,7 +22,7 @@ const Home = () => {
     <main className=" min-h-[90vh] max-h-[90vh] w-full bg-gradient-to-r from-[#064BB5] to-[#040c18cd]  flex flex-row  overflow-hidden ">
       <BarSide element={1} />
 
-      <div className="w-3/5 mt-12 flex flex-col px-10 overflow-y-auto  overflow-x-hidden">
+      <div className="w-3/5 mt-12 flex flex-col px-10 overflow-y-auto  overflow-x-hidden custom-scrollbar">
         <section className="w-full">
           {playlistFeature && (
             <CarouselPlaylistFeature title={'Playlist para ti'} dataCard={playlistFeature} />

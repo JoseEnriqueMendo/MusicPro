@@ -1,5 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital@0;1&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,600;1,600&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital@0;1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,600;1,600&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -10,6 +10,35 @@
     font-family: Clash Display;
     font-weight: 400;
     src: url(../../musicPro/public/fonts/FontshareKit-2407000978/ClashDisplay/Fonts/OTF/ClashDisplay-Regular.otf)
-      format("otf");
+      format('otf');
   }
+}
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  background-color: linear-gradient(to right, #064bb5, #040c18cd);
+  min-height: 100vh;
+  min-width: 100vw;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #284064;
+  height: 20px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: rgba(128, 128, 128, 0.17);
+  border-radius: 6px;
+  border: none;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  /* //hover */
+  background: #2f3e54;
 }
