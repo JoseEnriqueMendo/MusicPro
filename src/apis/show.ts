@@ -1,11 +1,11 @@
 import axios from 'axios';
+
 const tokenSpotify = localStorage.getItem('token') || '';
 const urlBase = import.meta.env.VITE_SPOTIFY_URL;
-
-const playlistServices = {
+const showServices = {
   get: async (id: string) => {
     try {
-      const data = await axios.get(urlBase + 'playlists/' + id, {
+      const data = await axios.get(urlBase + 'shows/' + id, {
         headers: {
           Authorization: `Bearer ${tokenSpotify}`,
         },
@@ -16,21 +16,15 @@ const playlistServices = {
     }
   },
 
-  getByFeatures: async () => {
+  getSeveral: async (ids: string[]) => {
+    let urlRequest = urlBase + 'shows?ids=';
+
+    ids.forEach((item, index) => {
+      urlRequest = urlRequest + (index !== 0 ? ',' + item : item);
+    });
+
     try {
-      const data = await axios.get(urlBase + 'browse/featured-playlists', {
-        headers: {
-          Authorization: `Bearer ${tokenSpotify}`,
-        },
-      });
-      return data.data;
-    } catch (error) {
-      console.log(error);
-    }
-  },
-  getByCategory: async (category: string) => {
-    try {
-      const data = await axios.get(urlBase + 'browse/categories/' + category + '/playlists', {
+      const data = await axios.get(urlRequest, {
         headers: {
           Authorization: `Bearer ${tokenSpotify}`,
         },
@@ -41,9 +35,9 @@ const playlistServices = {
     }
   },
 
-  getCover: async (id: string) => {
+  getEpisodes: async (id: string) => {
     try {
-      const data = await axios.get(urlBase + 'playlists/' + id + '/images', {
+      const data = await axios.get(urlBase + 'shows/' + id + '/episodes', {
         headers: {
           Authorization: `Bearer ${tokenSpotify}`,
         },
@@ -55,4 +49,4 @@ const playlistServices = {
   },
 };
 
-export default playlistServices;
+export default showServices;
