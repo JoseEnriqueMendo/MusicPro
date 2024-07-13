@@ -1,7 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
-import trackingMusic from './slices/trackingMusic';
+import trackReducer from './slices/trackSlice';
+
 export const store = configureStore({
   reducer: {
-    trackMusic: trackingMusic,
+    trackReducer,
   },
 });
+
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;

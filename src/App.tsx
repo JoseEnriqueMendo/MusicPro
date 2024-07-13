@@ -6,20 +6,23 @@ import Artist from './pages/Artist';
 import PlaylistPage from './pages/Playlist';
 //import Components
 import Footer from './components/Footer';
-
+import { Provider } from 'react-redux';
+import { store } from './store/store';
 function App() {
   const name_proyect = import.meta.env.VITE_NAME_PAGE || '';
 
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path={`${name_proyect}/home`} element={<Home />} />
-        <Route path={`${name_proyect}/artist`} element={<Artist />} />
-        <Route path={`${name_proyect}/playlist/:id`} element={<PlaylistPage />} />
-        <Route path="*" element={<Navigate to={`${name_proyect}/home`} />} />
-      </Routes>
-      <Footer></Footer>
-    </BrowserRouter>
+    <Provider store={store}>
+      <BrowserRouter>
+        <Routes>
+          <Route path={`${name_proyect}/home`} element={<Home />} />
+          <Route path={`${name_proyect}/artist`} element={<Artist />} />
+          <Route path={`${name_proyect}/playlist/:id`} element={<PlaylistPage />} />
+          <Route path="*" element={<Navigate to={`${name_proyect}/home`} />} />
+        </Routes>
+        <Footer></Footer>
+      </BrowserRouter>
+    </Provider>
   );
 }
 
