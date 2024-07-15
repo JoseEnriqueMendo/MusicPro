@@ -18,7 +18,7 @@ body,
 html {
   margin: 0;
   padding: 0;
-  background-color: linear-gradient(to right, #064bb5, #040c18cd);
+  background: linear-gradient(to right, #064bb5, rgba(4, 12, 24, 0.8));
   min-height: 100vh;
   min-width: 100vw;
 }
@@ -28,17 +28,20 @@ html {
 }
 
 .custom-scrollbar::-webkit-scrollbar-track {
-  background: #284064;
-  height: 20px;
+  background: transparent;
+  height: 10px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  background-color: rgba(128, 128, 128, 0.17);
+  background-color: transparent;
   border-radius: 6px;
   border: none;
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  /* //hover */
-  background: #2f3e54;
+  background: rgba(173, 160, 160, 0.17);
+}
+
+.modify::-webkit-scrollbar-thumb {
+  background-color: rgba(128, 128, 128, 0.17);
 }

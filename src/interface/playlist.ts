@@ -1,4 +1,4 @@
-import { Track } from './music';
+import { Track } from './track';
 
 export interface Playlist {
   collaborative: boolean;

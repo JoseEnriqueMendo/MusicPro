@@ -4,8 +4,11 @@ import playlistServices from '../apis/playlist';
 import { PlaylistFeatureOrCategory } from '../interface/playlist';
 import { CarouselPlaylistFeature } from '../components/Carousel';
 import { BarSide } from '../components/BarSide';
+import useHover from '../utils/useHover';
+
 const Home = () => {
   const [playlistFeature, setPlaylistFeature] = useState<PlaylistFeatureOrCategory>();
+  const { handleMouseEnter, handleMouseLeave, isHovered } = useHover();
 
   useEffect(() => {
     tokenServices.getToken();
@@ -19,10 +22,16 @@ const Home = () => {
   };
 
   return (
-    <main className=" min-h-[90vh] max-h-[90vh] w-full bg-gradient-to-r from-[#064BB5] to-[#040c18cd]  flex flex-row  overflow-hidden ">
+    <main className=" min-h-[90vh] max-h-[90vh] w-full   flex flex-row  overflow-hidden">
       <BarSide element={1} />
 
-      <div className="w-3/5 mt-12 flex flex-col px-10 overflow-y-auto  overflow-x-hidden custom-scrollbar">
+      <div
+        className={` bg-transparent w-[65vw] mt-12 flex flex-col px-10 overflow-y-auto overflow-x-hidden custom-scrollbar ${
+          isHovered ? 'modify' : ''
+        }`}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+      >
         <section className="w-full">
           {playlistFeature && (
             <CarouselPlaylistFeature title={'Playlist para ti'} dataCard={playlistFeature} />
@@ -49,7 +58,7 @@ const Home = () => {
           )}
         </section>
       </div>
-      <div className="w-1/5 min-h-[90vh] "></div>
+      <div className="w-[14vw] min-h-[90vh] "></div>
     </main>
   );
 };

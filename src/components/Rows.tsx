@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { PiPlayCircleLight } from "react-icons/pi";
-
+import React, { useState } from 'react';
+import { PiPlayCircleLight } from 'react-icons/pi';
+import useHover from '../utils/useHover';
 export const RowTable: React.FC<{
   idItem: string;
   typeItem: string;
@@ -10,30 +10,13 @@ export const RowTable: React.FC<{
   artistName: string;
   albumName: string;
   handleClick: (id: string, type: string) => void;
-}> = ({
-  idItem,
-  indexItem,
-  img,
-  name,
-  artistName,
-  albumName,
-  typeItem,
-  handleClick,
-}) => {
-  const [isHovered, setIsHovered] = useState(false);
-
-  const handleMouseEnter = () => {
-    setIsHovered(true);
-  };
-
-  const handleMouseLeave = () => {
-    setIsHovered(false);
-  };
+}> = ({ idItem, indexItem, img, name, artistName, albumName, typeItem, handleClick }) => {
+  const { handleMouseEnter, handleMouseLeave, isHovered } = useHover();
 
   return (
     <tr
       key={idItem}
-      className="hover:bg-blue-900 text-left py-3" // Ajustar el padding vertical
+      className="hover:bg-blue-900 text-left py-3"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
@@ -42,7 +25,7 @@ export const RowTable: React.FC<{
           indexItem + 1
         ) : (
           <PiPlayCircleLight
-            size={"24px"} // Establecer un tamaño fijo
+            size={'18px'}
             className="cursor-pointer"
             onClick={() => {
               handleClick(idItem, typeItem);
@@ -51,9 +34,7 @@ export const RowTable: React.FC<{
         )}
       </td>
       <td className="flex flex-row gap-4 font-openSans font-semibold text-lg  items-center mr-10 overflow-hidden py-3">
-        <img src={img} className="w-12 h-12 rounded-md object-cover" />{" "}
-        {/* Ajustar el tamaño de la imagen */}
-        <p>{name}</p>
+        <img src={img} className="w-12 h-12 rounded-md object-cover" /> <p>{name}</p>
       </td>
       <td className=" mr-5 text-lg py-3">{artistName}</td>
       <td className=" mr-5 text-lg py-3">{albumName}</td>
@@ -70,15 +51,7 @@ export const AlbumTable: React.FC<{
   duration: string;
   handleClick: (id: string) => void;
 }> = ({ idItem, indexItem, img, name, duration, artistName, handleClick }) => {
-  const [isHovered, setIsHovered] = useState(false);
-
-  const handleMouseEnter = () => {
-    setIsHovered(true);
-  };
-
-  const handleMouseLeave = () => {
-    setIsHovered(false);
-  };
+  const { handleMouseEnter, handleMouseLeave, isHovered } = useHover();
 
   return (
     <tr
@@ -92,7 +65,7 @@ export const AlbumTable: React.FC<{
           indexItem + 1
         ) : (
           <PiPlayCircleLight
-            size={"24px"} // Establecer un tamaño fijo
+            size={'18px'}
             className="cursor-pointer"
             onClick={() => {
               handleClick(idItem);

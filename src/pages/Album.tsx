@@ -1,26 +1,26 @@
-import React, { useEffect, useState } from "react";
-import { AlbumObject } from "../interface/album";
-import albumService from "../apis/albums";
-import { BarSide } from "../components/BarSide";
-import Return from "../components/Return";
-import artistsService from "../apis/artist";
-import { ArtistObject } from "../interface/artists";
-import { PiHeart, PiShareNetworkLight } from "react-icons/pi";
-import { MdOutlineWatchLater } from "react-icons/md";
-import { AlbumTable } from "../components/Rows";
-import { formatDuration, sumAndFormatDuration } from "../utils/time";
-import { getArtistsNames } from "../utils/artists";
-import { useTrack } from "../hooks/trackHook";
+import React, { useEffect, useState } from 'react';
+import { AlbumObject } from '../interface/album';
+import albumService from '../apis/albums';
+import { BarSide } from '../components/BarSide';
+import Return from '../components/Return';
+import artistsService from '../apis/artist';
+import { ArtistObject } from '../interface/artists';
+import { PiHeart, PiShareNetworkLight } from 'react-icons/pi';
+import { MdOutlineWatchLater } from 'react-icons/md';
+import { AlbumTable } from '../components/Rows';
+import { formatDuration, sumAndFormatDuration } from '../utils/time';
+import { getArtistsNames } from '../utils/artists';
+import { useTrack } from '../hooks/trackHook';
 
 const Album = () => {
   const [album, setAlbum] = useState<AlbumObject | null>(null);
   const [artist, setArtist] = useState<ArtistObject | null>(null);
-  const albumId = "0QIeCfKAZP9ygSV8T3vb9Y"; // ID de ejemplo, ajusta según el álbum que quieras obtener
-  const [time, setTime] = useState<string>("");
+  const albumId = '0QIeCfKAZP9ygSV8T3vb9Y'; // ID de ejemplo, ajusta según el álbum que quieras obtener
+  const [time, setTime] = useState<string>('');
   const { playTrack } = useTrack();
 
   const handleClick = (id: string) => {
-    playTrack(id, "track");
+    playTrack(id, 'track');
   };
 
   useEffect(() => {
@@ -28,14 +28,12 @@ const Album = () => {
       try {
         const fetchedAlbum = await albumService.getAlbum(albumId);
         if (fetchedAlbum && fetchedAlbum.artists && fetchedAlbum.artists[0]) {
-          const fetchArtist = await artistsService.getArtist(
-            fetchedAlbum.artists[0].id
-          );
+          const fetchArtist = await artistsService.getArtist(fetchedAlbum.artists[0].id);
           setArtist(fetchArtist);
         }
         setAlbum(fetchedAlbum);
       } catch (error) {
-        console.error("Error fetching album:", error);
+        console.error('Error fetching album:', error);
       }
     };
 
@@ -50,11 +48,15 @@ const Album = () => {
   }, [album]);
 
   if (!album) {
-    return <div>Loading...</div>;
+    return (
+      <div className="min-h-[90vh] max-h-[90vh] w-full  flex flex-row  overflow-hidden">
+        Loading...
+      </div>
+    );
   }
 
   return (
-    <main className="min-h-[90vh] max-h-[90vh] w-full bg-gradient-to-r from-[#064BB5] to-[#040c18cd]  flex flex-row  overflow-hidden">
+    <main className="min-h-[90vh] max-h-[90vh] w-full  flex flex-row  overflow-hidden">
       <BarSide element={-1} />
       <div className="w-3/4 mt-12 flex flex-col px-10 overflow-y-auto  overflow-x-hidden custom-scrollbar text-white gap-5">
         <Return route="home" />
@@ -72,14 +74,11 @@ const Album = () => {
             {/* Tipo de álbum */}
             <p className="font-clashDisplay text-base">
               {album?.album_type &&
-                album.album_type.charAt(0).toUpperCase() +
-                  album.album_type.slice(1)}
+                album.album_type.charAt(0).toUpperCase() + album.album_type.slice(1)}
             </p>
 
             {/* Nombre del álbum */}
-            <p className="font-clashDisplay text-5xl font-bold">
-              {album?.name}
-            </p>
+            <p className="font-clashDisplay text-5xl font-bold">{album?.name}</p>
 
             {/* Detalles del artista y fecha de lanzamiento */}
             <div className="flex items-center gap-3">
@@ -101,12 +100,12 @@ const Album = () => {
               Reproducir
             </button>
             <PiHeart
-              size={"40px"}
+              size={'40px'}
               className="border-white rounded-full border p-1.5 cursor-pointer"
             />
 
             <PiShareNetworkLight
-              size={"40px"}
+              size={'40px'}
               className="border-white rounded-full border p-1.5 cursor-pointer"
             />
           </div>

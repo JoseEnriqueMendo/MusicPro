@@ -65,7 +65,7 @@ export const BarSide: React.FC<{ element: number }> = ({ element }) => {
           icon={<BsSoundwave size={'30px'} />}
           title={'Albums'}
           numberItem={2}
-          linkTo=""
+          linkTo="album"
         />
         <ItemBarside
           icon={<GiPodium size={'28px'} />}
