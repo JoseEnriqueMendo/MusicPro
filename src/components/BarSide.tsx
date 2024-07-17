@@ -10,7 +10,7 @@ import { VscSettingsGear } from 'react-icons/vsc';
 import { IoChatbubblesOutline } from 'react-icons/io5';
 import { FaUserFriends } from 'react-icons/fa';
 //import Imgs
-import logo from '../../public/logo.svg';
+import logo from '/logo.svg';
 
 export const BarSide: React.FC<{ element: number }> = ({ element }) => {
   const navigate = useNavigate();

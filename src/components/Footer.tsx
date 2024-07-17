@@ -20,7 +20,7 @@ const Footer: React.FC = () => {
       <iframe
         className="w-[100.5%] ml-[-6px] "
         title="Reproductor de Spotify"
-        src={`${url_base}${typeTrack}/${id}?autoplay=1`}
+        src={`${url_base}${typeTrack}/${id}`}
         allow="encrypted-media"
         height={'100vh'}
       ></iframe>

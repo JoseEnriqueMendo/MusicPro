@@ -43,3 +43,24 @@ export const HeadBoardDefault: React.FC<{
     </div>
   );
 };
+
+export const HeadBoarBasic: React.FC<{
+  img: string;
+  name: string;
+  type: string;
+  owner_name: string;
+}> = ({ img, type, name, owner_name }) => {
+  return (
+    <div className="flex gap-6 w-full ">
+      <img
+        src={img}
+        className={'min-w-[150px] min-h-[100px] w-[200px] h-[200px]  rounded-lg object-cover '}
+      />
+      <div className="flex flex-col  justify-end  gap-2 overflow-hidden h-full">
+        <p className="font-clashDisplay text-base ">{type}</p>
+        <p className="font-clashDisplay text-6xl font-bold">{name} </p>
+        <p className="font-clashDisplay text-xl mb-1">{`${owner_name}`}</p>
+      </div>
+    </div>
+  );
+};

@@ -1,6 +1,10 @@
 import React from 'react';
 import useHover from '../utils/useHover';
 import { FaPlay } from 'react-icons/fa';
+import { Episode } from '../interface/episode';
+import { flipDate, formatDurationExplicit } from '../utils/time';
+
+import { useTrack } from '../hooks/trackHook';
 
 export const CardMusic: React.FC<{
   url_img: string;
@@ -31,6 +35,36 @@ export const CardMusic: React.FC<{
         }`}
       >
         <FaPlay className="text-darkPurple" />
+      </div>
+    </div>
+  );
+};
+
+export const CardEpisode: React.FC<{
+  dataEpisode: Episode;
+}> = ({ dataEpisode }) => {
+  const { playTrack } = useTrack();
+  return (
+    <div className=" text-white flex flex-row gap-8 px-4  max-h-36 items-center overflow-hidden  hover:bg-[#05208a]  rounded-md relative ">
+      <img src={dataEpisode.images[0].url} className="h-4/5 rounded-lg object-cover" />
+
+      <div className="flex flex-col h-4/5 gap-1 ">
+        <p className="font-semibold">{`${dataEpisode.name}`}</p>
+        <p className="opacity-50   text-[12px] font-openSans  line-clamp-5 text-ellipsis">
+          {`${dataEpisode.description}`}
+        </p>
+        <span className="flex flex-row gap-3  text-[11px] font-openSans mt-1">
+          <p>{`${flipDate(dataEpisode.release_date)}`}</p>
+          <p>{`${formatDurationExplicit(dataEpisode.duration_ms)}`}</p>
+        </span>
+        <div
+          className={
+            'bg-greenLime rounded-full  left-[96%] top-[68%] flex items-center justify-center p-2.5 absolute  cursor-pointer'
+          }
+          onClick={() => playTrack(dataEpisode.id, 'episode')}
+        >
+          <FaPlay className="text-darkPurple" size={'12px'} />
+        </div>
       </div>
     </div>
   );

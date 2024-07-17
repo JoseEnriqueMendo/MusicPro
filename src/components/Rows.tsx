@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { PiPlayCircleLight } from 'react-icons/pi';
 import useHover from '../utils/useHover';
+import { useNavigate } from 'react-router-dom';
+
 export const RowTable: React.FC<{
   idItem: string;
   typeItem: string;
@@ -12,7 +14,8 @@ export const RowTable: React.FC<{
   handleClick: (id: string, type: string) => void;
 }> = ({ idItem, indexItem, img, name, artistName, albumName, typeItem, handleClick }) => {
   const { handleMouseEnter, handleMouseLeave, isHovered } = useHover();
-
+  const navigate = useNavigate();
+  const name_proyect = import.meta.env.VITE_NAME_PAGE || '';
   return (
     <tr
       key={idItem}
@@ -34,9 +37,15 @@ export const RowTable: React.FC<{
         )}
       </td>
       <td className="flex flex-row gap-4 font-openSans font-semibold text-lg  items-center mr-10 overflow-hidden py-3">
-        <img src={img} className="w-12 h-12 rounded-md object-cover" /> <p>{name}</p>
+        <img src={img} className="w-12 h-12 rounded-md object-cover" />{' '}
+        <p
+          className="hover:underline cursor-pointer"
+          onClick={() => navigate(`${name_proyect}/${typeItem}/${idItem}`)}
+        >
+          {name}
+        </p>
       </td>
-      <td className=" mr-5 text-lg py-3">{artistName}</td>
+      <td className=" mr-5 text-lg py-3   ">{artistName}</td>
       <td className=" mr-5 text-lg py-3">{albumName}</td>
     </tr>
   );
