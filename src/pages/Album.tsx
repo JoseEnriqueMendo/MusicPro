@@ -12,6 +12,7 @@ import { formatDuration, sumAndFormatDuration } from "../utils/time";
 import { getArtistsNames } from "../utils/artists";
 import { useTrack } from "../hooks/trackHook";
 import { useParams } from "react-router-dom";
+import tokenServices from "../apis/token";
 
 const Album = () => {
   const [album, setAlbum] = useState<AlbumObject | null>(null);
@@ -42,7 +43,7 @@ const Album = () => {
         console.error("Error fetching album:", error);
       }
     };
-
+    tokenServices.getToken();
     fetchAlbum();
   }, []);
 

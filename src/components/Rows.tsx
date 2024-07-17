@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
-import { PiPlayCircleLight } from 'react-icons/pi';
-import useHover from '../utils/useHover';
+import React, { useState } from "react";
+import { PiPlayCircleLight } from "react-icons/pi";
+import useHover from "../utils/useHover";
+import { TopTracks } from "../interface/artists";
+
 export const RowTable: React.FC<{
   idItem: string;
   typeItem: string;
@@ -10,7 +12,16 @@ export const RowTable: React.FC<{
   artistName: string;
   albumName: string;
   handleClick: (id: string, type: string) => void;
-}> = ({ idItem, indexItem, img, name, artistName, albumName, typeItem, handleClick }) => {
+}> = ({
+  idItem,
+  indexItem,
+  img,
+  name,
+  artistName,
+  albumName,
+  typeItem,
+  handleClick,
+}) => {
   const { handleMouseEnter, handleMouseLeave, isHovered } = useHover();
 
   return (
@@ -25,7 +36,7 @@ export const RowTable: React.FC<{
           indexItem + 1
         ) : (
           <PiPlayCircleLight
-            size={'18px'}
+            size={"18px"}
             className="cursor-pointer"
             onClick={() => {
               handleClick(idItem, typeItem);
@@ -34,7 +45,8 @@ export const RowTable: React.FC<{
         )}
       </td>
       <td className="flex flex-row gap-4 font-openSans font-semibold text-lg  items-center mr-10 overflow-hidden py-3">
-        <img src={img} className="w-12 h-12 rounded-md object-cover" /> <p>{name}</p>
+        <img src={img} className="w-12 h-12 rounded-md object-cover" />{" "}
+        <p>{name}</p>
       </td>
       <td className=" mr-5 text-lg py-3">{artistName}</td>
       <td className=" mr-5 text-lg py-3">{albumName}</td>
@@ -65,7 +77,7 @@ export const AlbumTable: React.FC<{
           indexItem + 1
         ) : (
           <PiPlayCircleLight
-            size={'18px'}
+            size={"18px"}
             className="cursor-pointer"
             onClick={() => {
               handleClick(idItem);
@@ -73,12 +85,12 @@ export const AlbumTable: React.FC<{
           />
         )}
       </td>
-      <td className="flex flex-row gap-4 font-openSans font-semibold text-lg truncate items-center mr-10 overflow-hidden">
+      <td className="flex flex-row gap-4 font-openSans font-semibold text-lg items-center mr-10 overflow-hidden">
         <img src={img} className="w-12 h-12 rounded-md object-cover" />
-        <p>{name}</p>
+        <p className="truncate max-w-xs font-clashDisplay">{name}</p>
       </td>
-      <td className="truncate mr-5 text-lg">{artistName}</td>
-      <td className="truncate mr-5 text-lg">{duration}</td>
+      <td className="truncate  mr-5 text-lg font-clashDisplay">{artistName}</td>
+      <td className="truncate mr-5 text-lg font-clashDisplay">{duration}</td>
     </tr>
   );
 };
