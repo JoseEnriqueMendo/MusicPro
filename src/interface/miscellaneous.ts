@@ -1,6 +1,6 @@
 export interface ExternalUrls {
   spotify?: string;
-  href: string;
+  href: string | null;
 }
 
 export interface ImageObject {

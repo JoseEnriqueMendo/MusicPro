@@ -43,3 +43,32 @@ export interface AlbumObject {
   label: string;
   popularity: number;
 }
+
+interface AlbumSimplified {
+  href: string;
+  limit: number;
+  next: string | null;
+  offset: number;
+  previous: string | null;
+  total: number;
+  items: OneSimplified[];
+}
+
+interface OneSimplified {
+  album_type: string;
+  name: string;
+  release_date: string;
+  release_date_precision: string;
+  total_tracks: number;
+  type: string;
+  uri: string;
+  href: string;
+  id: string;
+  artists: SimplifiedArtistObject[];
+  available_markets?: string[];
+  external_urls: ExternalUrls;
+  images: ImageObject[];
+}
+export interface NewReleases {
+  albums: AlbumSimplified;
+}

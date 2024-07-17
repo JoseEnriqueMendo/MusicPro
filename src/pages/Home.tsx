@@ -1,18 +1,37 @@
-import { useEffect, useState } from 'react';
-import tokenServices from '../apis/token';
-import playlistServices from '../apis/playlist';
-import { PlaylistFeatureOrCategory } from '../interface/playlist';
-import { CarouselPlaylistFeature } from '../components/Carousel';
-import { BarSide } from '../components/BarSide';
-import useHover from '../utils/useHover';
+import { useEffect, useState } from "react";
+import tokenServices from "../apis/token";
+import playlistServices from "../apis/playlist";
+import { PlaylistFeatureOrCategory } from "../interface/playlist";
+import {
+  CarouselPlaylistFeature,
+  CarouselAlbumsFeature,
+} from "../components/Carousel";
+import { BarSide } from "../components/BarSide";
+import useHover from "../utils/useHover";
+import albumService from "../apis/albums";
+import { NewReleases } from "../interface/album";
 
 const Home = () => {
-  const [playlistFeature, setPlaylistFeature] = useState<PlaylistFeatureOrCategory>();
+  const [playlistFeature, setPlaylistFeature] =
+    useState<PlaylistFeatureOrCategory>();
+  const [newReleases, setNewReleases] = useState<NewReleases>();
   const { handleMouseEnter, handleMouseLeave, isHovered } = useHover();
+
+  const getNewReleases = async () => {
+    const releases = await albumService.getNewReleases();
+    console.log(releases);
+    if (releases) {
+      setNewReleases(releases);
+
+      return;
+    }
+    return;
+  };
 
   useEffect(() => {
     tokenServices.getToken();
     handleClick();
+    getNewReleases();
   }, []);
 
   const handleClick = async () => {
@@ -27,34 +46,59 @@ const Home = () => {
 
       <div
         className={` bg-transparent w-[65vw] mt-12 flex flex-col px-10 overflow-y-auto overflow-x-hidden custom-scrollbar ${
-          isHovered ? 'modify' : ''
+          isHovered ? "modify" : ""
         }`}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
         <section className="w-full">
           {playlistFeature && (
-            <CarouselPlaylistFeature title={'Playlist para ti'} dataCard={playlistFeature} />
+            <CarouselPlaylistFeature
+              title={"Playlist para ti"}
+              dataCard={playlistFeature}
+            />
           )}
         </section>
         <section className="w-full">
           {playlistFeature && (
-            <CarouselPlaylistFeature title={'Otros'} dataCard={playlistFeature} />
+            <CarouselPlaylistFeature
+              title={"Otros"}
+              dataCard={playlistFeature}
+            />
+          )}
+        </section>
+
+        <section className="w-full">
+          {newReleases && (
+            <CarouselAlbumsFeature
+              title={"Nuevos lanzamientos"}
+              dataCard={newReleases}
+            />
+          )}
+        </section>
+
+        <section className="w-full">
+          {playlistFeature && (
+            <CarouselPlaylistFeature
+              title={"Otros"}
+              dataCard={playlistFeature}
+            />
           )}
         </section>
         <section className="w-full">
           {playlistFeature && (
-            <CarouselPlaylistFeature title={'Otros'} dataCard={playlistFeature} />
+            <CarouselPlaylistFeature
+              title={"Otros"}
+              dataCard={playlistFeature}
+            />
           )}
         </section>
         <section className="w-full">
           {playlistFeature && (
-            <CarouselPlaylistFeature title={'Otros'} dataCard={playlistFeature} />
-          )}
-        </section>
-        <section className="w-full">
-          {playlistFeature && (
-            <CarouselPlaylistFeature title={'Otros'} dataCard={playlistFeature} />
+            <CarouselPlaylistFeature
+              title={"Otros"}
+              dataCard={playlistFeature}
+            />
           )}
         </section>
       </div>
