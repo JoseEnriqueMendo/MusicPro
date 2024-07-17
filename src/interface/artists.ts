@@ -1,4 +1,5 @@
 import { ExternalUrls, ImageObject, Followers } from "./miscellaneous";
+import { TopTrack } from "./track";
 
 export interface ArtistObject {
   external_urls: ExternalUrls;
@@ -11,4 +12,8 @@ export interface ArtistObject {
   popularity: number;
   type: "artist";
   uri: string;
+}
+
+export interface TopTracks {
+  tracks: TopTrack[];
 }

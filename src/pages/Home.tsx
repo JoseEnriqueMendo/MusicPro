@@ -1,17 +1,36 @@
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState } from 'react';
 import playlistServices from '../apis/playlist';
 import { PlaylistFeatureOrCategory } from '../interface/playlist';
-import { CarouselPlaylistFeature } from '../components/Carousel';
+import { CarouselPlaylistFeature, CarouselAlbumsFeature } from '../components/Carousel';
 import { BarSide } from '../components/BarSide';
 import useHover from '../utils/useHover';
+import albumService from '../apis/albums';
+import { NewReleases } from '../interface/album';
 
 const Home = () => {
   const [playlistFeature, setPlaylistFeature] = useState<PlaylistFeatureOrCategory>();
-  const [playlistCategory, setPlaylistCategory] = useState<PlaylistFeatureOrCategory[]>([]);
-
+  const [playlistCategory, setPlaylistCategory] = useState<PlaylistFeatureOrCategory[]>();
+  const [newReleases, setNewReleases] = useState<NewReleases>();
   const { handleMouseEnter, handleMouseLeave, isHovered } = useHover();
 
-  const handleClick = useCallback(async () => {
+  const getNewReleases = async () => {
+    const releases = await albumService.getNewReleases();
+    console.log(releases);
+    if (releases) {
+      setNewReleases(releases);
+
+      return;
+    }
+    return;
+  };
+
+  // useEffect(() => {
+  //   tokenServices.getToken();
+  //   handleClick();
+  //   getNewReleases();
+  // }, []);
+
+  const handleClick = async () => {
     // console.log(localStorage.getItem('token'));
     const result = await playlistServices.getByFeatures();
     setPlaylistFeature(result);
@@ -22,11 +41,12 @@ const Home = () => {
       await playlistServices.getByCategory('metal'),
       await playlistServices.getByCategory('cumbia'),
     ]);
-  }, []);
+  };
 
   useEffect(() => {
+    getNewReleases();
     handleClick();
-  }, [handleClick]);
+  }, []);
 
   return (
     <main className="min-h-[90vh] max-h-[90vh] w-full flex flex-row overflow-hidden">
@@ -45,11 +65,40 @@ const Home = () => {
           )}
         </section>
 
-        {playlistCategory.map((category, index) => (
-          <section className="w-full" key={index}>
-            <CarouselPlaylistFeature title={category.message} dataCard={category} />
-          </section>
-        ))}
+        {playlistCategory &&
+          playlistCategory.map((category, index) => (
+            <section className="w-full" key={index}>
+              <CarouselPlaylistFeature title={category.message} dataCard={category} />
+            </section>
+          ))}
+
+        <section className="w-full">
+          {playlistFeature && (
+            <CarouselPlaylistFeature title={'Otros'} dataCard={playlistFeature} />
+          )}
+        </section>
+
+        <section className="w-full">
+          {newReleases && (
+            <CarouselAlbumsFeature title={'Nuevos lanzamientos'} dataCard={newReleases} />
+          )}
+        </section>
+
+        <section className="w-full">
+          {playlistFeature && (
+            <CarouselPlaylistFeature title={'Otros'} dataCard={playlistFeature} />
+          )}
+        </section>
+        <section className="w-full">
+          {playlistFeature && (
+            <CarouselPlaylistFeature title={'Otros'} dataCard={playlistFeature} />
+          )}
+        </section>
+        <section className="w-full">
+          {playlistFeature && (
+            <CarouselPlaylistFeature title={'Otros'} dataCard={playlistFeature} />
+          )}
+        </section>
       </div>
       <div className="w-[14vw] min-h-[90vh]"></div>
     </main>

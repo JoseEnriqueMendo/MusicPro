@@ -42,7 +42,7 @@ function App() {
           <Route path={`${name_proyect}/track/:id`} element={<TrackPage />} />
           <Route path={`${name_proyect}/show/:id`} element={<ShowPage />} />
           <Route path={`${name_proyect}/episode/:id`} element={<EpisodePage />} />
-          <Route path={`${name_proyect}/album`} element={<Album />} />
+          <Route path={`${name_proyect}/album/:id`} element={<Album />} />
           <Route path="*" element={<Navigate to={`${name_proyect}/home`} />} />
         </Routes>
         <Footer></Footer>
