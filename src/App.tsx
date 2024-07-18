@@ -13,7 +13,7 @@ import Footer from './components/Footer';
 import { Provider } from 'react-redux';
 import { store } from './store/store';
 import tokenServices from './apis/token';
-
+import LayoutBase from './layout/layoutBase';
 function App() {
   const name_proyect = import.meta.env.VITE_NAME_PAGE || '';
   const [tokenExist, settokenExist] = useState(!localStorage.getItem('token') ? false : true);
@@ -37,17 +37,18 @@ function App() {
   ) : (
     <Provider store={store}>
       <BrowserRouter>
-        <Routes>
-          <Route path={`${name_proyect}/home`} element={<Home />} />
-          <Route path={`${name_proyect}/artist`} element={<Artist />} />
-          <Route path={`${name_proyect}/playlist/:id`} element={<PlaylistPage />} />
-          <Route path={`${name_proyect}/track/:id`} element={<TrackPage />} />
-          <Route path={`${name_proyect}/show/:id`} element={<ShowPage />} />
-          <Route path={`${name_proyect}/episode/:id`} element={<EpisodePage />} />
-          <Route path={`${name_proyect}/album/:id`} element={<Album />} />
-          <Route path="*" element={<Navigate to={`${name_proyect}/home`} />} />
-        </Routes>
-        <Footer />
+        <LayoutBase>
+          <Routes>
+            <Route path={`${name_proyect}/home`} element={<Home />} />
+            <Route path={`${name_proyect}/artist`} element={<Artist />} />
+            <Route path={`${name_proyect}/playlist/:id`} element={<PlaylistPage />} />
+            <Route path={`${name_proyect}/track/:id`} element={<TrackPage />} />
+            <Route path={`${name_proyect}/show/:id`} element={<ShowPage />} />
+            <Route path={`${name_proyect}/episode/:id`} element={<EpisodePage />} />
+            <Route path={`${name_proyect}/album/:id`} element={<Album />} />
+            <Route path="*" element={<Navigate to={`${name_proyect}/home`} />} />
+          </Routes>
+        </LayoutBase>
       </BrowserRouter>
     </Provider>
   );

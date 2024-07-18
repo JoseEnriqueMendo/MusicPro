@@ -24,7 +24,7 @@ export const CardMusic: React.FC<{
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <img src={url_img} className="h-3/5 rounded-lg object-cover" />
+      <img src={url_img} className={'h-3/5 rounded-lg object-cover'} />
       <p className="font-bold text-[16px] font-openSans truncate">{name}</p>
       <p className="  opacity-50   text-[13px] font-openSans  line-clamp-2 text-ellipsis ">
         {abstract}

@@ -6,7 +6,6 @@ import { BarSide } from '../components/BarSide';
 import useHover from '../utils/useHover';
 import albumService from '../apis/albums';
 import { NewReleases } from '../interface/album';
-
 const Home = () => {
   const [playlistFeature, setPlaylistFeature] = useState<PlaylistFeatureOrCategory>();
   const [playlistCategory, setPlaylistCategory] = useState<PlaylistFeatureOrCategory[]>();
@@ -43,7 +42,6 @@ const Home = () => {
   return (
     <main className="min-h-[90vh] max-h-[90vh] w-full flex flex-row overflow-hidden">
       <BarSide element={1} />
-
       <div
         className={`bg-transparent w-[65vw] mt-12 flex flex-col px-10 overflow-y-auto overflow-x-hidden custom-scrollbar ${
           isHovered ? 'modify' : ''
@@ -70,7 +68,6 @@ const Home = () => {
           )}
         </section>
       </div>
-      <div className="w-[14vw] min-h-[90vh]"></div>
     </main>
   );
 };

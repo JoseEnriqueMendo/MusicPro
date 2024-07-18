@@ -28,6 +28,7 @@ html {
 }
 
 .custom-scrollbar::-webkit-scrollbar-track {
+  margin-top: 50px;
   background: transparent;
   height: 10px;
 }

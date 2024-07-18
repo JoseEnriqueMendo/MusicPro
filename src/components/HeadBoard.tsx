@@ -11,14 +11,25 @@ export const HeadBoardDefault: React.FC<{
 }> = ({ img, type, name, description, owner_name, onhandleClick }) => {
   return (
     <div className="flex gap-6 w-full ">
-      <img
-        src={img}
-        className={'min-w-[150px] min-h-[100px] w-[200px] h-[200px]  rounded-lg object-cover '}
-      />
-      <div className="flex flex-col  justify-end  gap-2 overflow-hidden h-full">
-        <p className="font-clashDisplay text-base ">{type}</p>
+      <figure
+        className={
+          'min-w-[150px] min-h-[100px] w-[200px] h-[200px] rounded-lg   ' +
+          (!img ? 'animate-loading' : '')
+        }
+      >
+        <img src={img} className={' object-cover   '} />
+      </figure>
+
+      <div className="flex flex-col  justify-end  gap-2 overflow-hidden h-full ">
+        <p
+          className={
+            'font-clashDisplay text-base  w-fit pr-5 py-1 ' + (!type ? 'animate-loading' : '')
+          }
+        >
+          {type}
+        </p>
         <p className="font-clashDisplay text-5xl font-bold">{name} </p>
-        <p className=" opacity-50   text-[13px] font-openSans  line-clamp-5 text-ellipsis">
+        <p className={' opacity-50   text-[13px] font-openSans  line-clamp-5 text-ellipsis  '}>
           {description}
         </p>
         <p className="font-clashDisplay text-base mb-1">{`Creado por: ${owner_name}`}</p>
