@@ -15,20 +15,12 @@ const Home = () => {
 
   const getNewReleases = async () => {
     const releases = await albumService.getNewReleases();
-    console.log(releases);
     if (releases) {
       setNewReleases(releases);
-
       return;
     }
     return;
   };
-
-  // useEffect(() => {
-  //   tokenServices.getToken();
-  //   handleClick();
-  //   getNewReleases();
-  // }, []);
 
   const handleClick = async () => {
     // console.log(localStorage.getItem('token'));
@@ -73,30 +65,8 @@ const Home = () => {
           ))}
 
         <section className="w-full">
-          {playlistFeature && (
-            <CarouselPlaylistFeature title={'Otros'} dataCard={playlistFeature} />
-          )}
-        </section>
-
-        <section className="w-full">
           {newReleases && (
             <CarouselAlbumsFeature title={'Nuevos lanzamientos'} dataCard={newReleases} />
-          )}
-        </section>
-
-        <section className="w-full">
-          {playlistFeature && (
-            <CarouselPlaylistFeature title={'Otros'} dataCard={playlistFeature} />
-          )}
-        </section>
-        <section className="w-full">
-          {playlistFeature && (
-            <CarouselPlaylistFeature title={'Otros'} dataCard={playlistFeature} />
-          )}
-        </section>
-        <section className="w-full">
-          {playlistFeature && (
-            <CarouselPlaylistFeature title={'Otros'} dataCard={playlistFeature} />
           )}
         </section>
       </div>

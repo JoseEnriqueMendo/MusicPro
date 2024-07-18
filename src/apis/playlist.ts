@@ -5,6 +5,7 @@ const urlBase = import.meta.env.VITE_SPOTIFY_URL;
 const playlistServices = {
   get: async (id: string) => {
     try {
+      const tokenSpotify = localStorage.getItem('token') || '';
       const data = await axios.get(urlBase + 'playlists/' + id, {
         headers: {
           Authorization: `Bearer ${tokenSpotify}`,
@@ -18,6 +19,7 @@ const playlistServices = {
 
   getByFeatures: async () => {
     try {
+      const tokenSpotify = localStorage.getItem('token') || '';
       const data = await axios.get(urlBase + 'browse/featured-playlists', {
         headers: {
           Authorization: `Bearer ${tokenSpotify}`,
@@ -30,6 +32,7 @@ const playlistServices = {
   },
   getByCategory: async (category: string) => {
     try {
+      const tokenSpotify = localStorage.getItem('token') || '';
       const data = await axios.get(urlBase + 'browse/categories/' + category + '/playlists', {
         headers: {
           Authorization: `Bearer ${tokenSpotify}`,
@@ -43,6 +46,7 @@ const playlistServices = {
 
   getCover: async (id: string) => {
     try {
+      const tokenSpotify = localStorage.getItem('token') || '';
       const data = await axios.get(urlBase + 'playlists/' + id + '/images', {
         headers: {
           Authorization: `Bearer ${tokenSpotify}`,

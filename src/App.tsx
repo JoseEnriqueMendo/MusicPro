@@ -19,8 +19,10 @@ function App() {
   const [tokenExist, settokenExist] = useState(!localStorage.getItem('token') ? false : true);
 
   const callToken = async () => {
-    await tokenServices.getToken();
-    settokenExist(true);
+    const res = await tokenServices.getToken();
+    if (res) {
+      settokenExist(true);
+    }
   };
 
   useEffect(() => {
@@ -28,11 +30,11 @@ function App() {
     callToken();
   }, []);
 
-  if (!tokenExist) {
-    return null;
-  }
-
-  return (
+  return !tokenExist ? (
+    <div>
+      <p className="text-white">Cargando..........</p>
+    </div>
+  ) : (
     <Provider store={store}>
       <BrowserRouter>
         <Routes>
@@ -45,7 +47,7 @@ function App() {
           <Route path={`${name_proyect}/album/:id`} element={<Album />} />
           <Route path="*" element={<Navigate to={`${name_proyect}/home`} />} />
         </Routes>
-        <Footer></Footer>
+        <Footer />
       </BrowserRouter>
     </Provider>
   );

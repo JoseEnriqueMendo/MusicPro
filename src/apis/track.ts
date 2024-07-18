@@ -1,10 +1,10 @@
 import axios from 'axios';
-const tokenSpotify = localStorage.getItem('token') || '';
 const urlBase = import.meta.env.VITE_SPOTIFY_URL;
 
 const musicServices = {
   get: async (id: string) => {
     try {
+      const tokenSpotify = localStorage.getItem('token') || '';
       const data = await axios.get(urlBase + 'tracks/' + id, {
         headers: {
           Authorization: `Bearer ${tokenSpotify}`,
@@ -24,6 +24,7 @@ const musicServices = {
     });
 
     try {
+      const tokenSpotify = localStorage.getItem('token') || '';
       const data = await axios.get(urlRequest, {
         headers: {
           Authorization: `Bearer ${tokenSpotify}`,

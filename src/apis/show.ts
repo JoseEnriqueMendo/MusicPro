@@ -1,10 +1,9 @@
 import axios from 'axios';
-
-const tokenSpotify = localStorage.getItem('token') || '';
 const urlBase = import.meta.env.VITE_SPOTIFY_URL;
 const showServices = {
   get: async (id: string) => {
     try {
+      const tokenSpotify = localStorage.getItem('token') || '';
       const data = await axios.get(urlBase + 'shows/' + id, {
         headers: {
           Authorization: `Bearer ${tokenSpotify}`,
@@ -24,6 +23,7 @@ const showServices = {
     });
 
     try {
+      const tokenSpotify = localStorage.getItem('token') || '';
       const data = await axios.get(urlRequest, {
         headers: {
           Authorization: `Bearer ${tokenSpotify}`,
@@ -37,6 +37,7 @@ const showServices = {
 
   getEpisodes: async (id: string) => {
     try {
+      const tokenSpotify = localStorage.getItem('token') || '';
       const data = await axios.get(urlBase + 'shows/' + id + '/episodes', {
         headers: {
           Authorization: `Bearer ${tokenSpotify}`,
