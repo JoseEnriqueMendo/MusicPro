@@ -1,8 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  idTrack: '43DeSV93pJPT4lCZaWZ6b1',
-  type: 'track',
+  idTrack: localStorage.getItem('idTrack') || '43DeSV93pJPT4lCZaWZ6b1',
+  type: localStorage.getItem('type') || 'track',
   isPlaying: false,
 };
 
@@ -15,6 +15,8 @@ export const trackSlice = createSlice({
       state.idTrack = idTrack;
       state.type = type;
       state.isPlaying = true;
+      localStorage.setItem('type', type);
+      localStorage.setItem('idTrack', idTrack);
     },
     onClearTrack: (state) => {
       state.idTrack = initialState.idTrack;

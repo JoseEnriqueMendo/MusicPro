@@ -8,7 +8,7 @@ const urlBase = import.meta.env.VITE_SPOTIFY_URL;
 const episodeServices = {
   get: async (id: string) => {
     try {
-      const data = await axios.get(urlBase + 'episodes/' + id, {
+      const data = await axios.get(urlBase + 'episodes/' + id + '?market=ES', {
         headers: {
           Authorization: `Bearer ${tokenSpotify}`,
         },
@@ -28,7 +28,7 @@ const episodeServices = {
     });
 
     try {
-      const data = await axios.get(urlRequest, {
+      const data = await axios.get(urlRequest + '&market=ES', {
         headers: {
           Authorization: `Bearer ${tokenSpotify}`,
         },

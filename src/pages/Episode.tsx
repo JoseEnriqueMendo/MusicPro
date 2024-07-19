@@ -27,13 +27,13 @@ const EpisodePage = () => {
   return (
     <main className="min-h-[90vh] max-h-[90vh] w-full   flex flex-row  overflow-hidden">
       <BarSide element={-1} />
-      <div className="w-[84vw] mt-12 flex flex-col px-10 overflow-y-auto  overflow-x-hidden custom-scrollbar text-white gap-5">
+      <div className="w-[65vw] mt-12 flex flex-col px-10 overflow-y-auto  overflow-x-hidden custom-scrollbar text-white gap-5">
         <Return route="home" />
         <HeadBoardDefault
           img={episode?.images[0].url || ''}
           description={episode?.description || ''}
           name={episode?.name || ''}
-          owner_name={episode?.images[0].url || ''}
+          owner_name={episode?.show?.name || ''}
           type={'Episodio de podcast'}
           onhandleClick={() => playTrack(id || '', 'episode')}
         />

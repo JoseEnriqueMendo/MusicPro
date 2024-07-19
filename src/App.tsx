@@ -9,7 +9,6 @@ import TrackPage from './pages/Track';
 import ShowPage from './pages/Show';
 import EpisodePage from './pages/Episode';
 //import Components
-import Footer from './components/Footer';
 import { Provider } from 'react-redux';
 import { store } from './store/store';
 import tokenServices from './apis/token';

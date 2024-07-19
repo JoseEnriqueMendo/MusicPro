@@ -20,7 +20,7 @@ export const HeadBoardDefault: React.FC<{
         <img src={img} className={' object-cover   '} />
       </figure>
 
-      <div className="flex flex-col  justify-end  gap-2 overflow-hidden h-full ">
+      <div className="flex flex-col justify-end gap-1 overflow-hidden h-full ">
         <p
           className={
             'font-clashDisplay text-base  w-fit pr-5 py-1 ' + (!type ? 'animate-loading' : '')
@@ -28,8 +28,8 @@ export const HeadBoardDefault: React.FC<{
         >
           {type}
         </p>
-        <p className="font-clashDisplay text-5xl font-bold">{name} </p>
-        <p className={' opacity-50   text-[13px] font-openSans  line-clamp-5 text-ellipsis  '}>
+        <p className="font-clashDisplay text-4xl font-bold">{name} </p>
+        <p className={' opacity-50   text-[13px] font-openSans  line-clamp-4 text-ellipsis  '}>
           {description}
         </p>
         <p className="font-clashDisplay text-base mb-1">{`Creado por: ${owner_name}`}</p>

@@ -3,6 +3,7 @@ import useHover from '../utils/useHover';
 import { FaPlay } from 'react-icons/fa';
 import { Episode } from '../interface/episode';
 import { flipDate, formatDurationExplicit } from '../utils/time';
+import { useNavigate } from 'react-router-dom';
 
 import { useTrack } from '../hooks/trackHook';
 
@@ -40,17 +41,24 @@ export const CardMusic: React.FC<{
   );
 };
 
+//    navigate(`${name_proyect}/album/${id}`);
+
 export const CardEpisode: React.FC<{
   dataEpisode: Episode;
 }> = ({ dataEpisode }) => {
   const { playTrack } = useTrack();
+  const navigate = useNavigate();
+  const name_proyect = import.meta.env.VITE_NAME_PAGE || '';
   return (
     <div className=" text-white flex flex-row gap-8 px-4  max-h-36 items-center overflow-hidden  hover:bg-[#05208a]  rounded-md relative ">
       <img src={dataEpisode.images[0].url} className="h-4/5 rounded-lg object-cover" />
 
       <div className="flex flex-col h-4/5 gap-1 ">
-        <p className="font-semibold">{`${dataEpisode.name}`}</p>
-        <p className="opacity-50   text-[12px] font-openSans  line-clamp-5 text-ellipsis">
+        <p
+          className="font-semibold cursor-pointer hover:underline w-fit"
+          onClick={() => navigate(`${name_proyect}/episode/${dataEpisode.id}`)}
+        >{`${dataEpisode.name}`}</p>
+        <p className="opacity-50   text-[12px] font-openSans  line-clamp-3 text-ellipsis">
           {`${dataEpisode.description}`}
         </p>
         <span className="flex flex-row gap-3  text-[11px] font-openSans mt-1">
@@ -59,7 +67,7 @@ export const CardEpisode: React.FC<{
         </span>
         <div
           className={
-            'bg-greenLime rounded-full  left-[96%] top-[68%] flex items-center justify-center p-2.5 absolute  cursor-pointer'
+            'bg-greenLime rounded-full  left-[95%] top-[68%] flex items-center justify-center p-2.5 absolute  cursor-pointer hover:p-[11px]'
           }
           onClick={() => playTrack(dataEpisode.id, 'episode')}
         >
