@@ -46,11 +46,12 @@ const LeftSide: React.FC = () => {
     if (dataT && dataT.artists.length > 0) {
       callArtist(dataT.artists[0].id);
     }
+    console.log(dataT?.artists);
   }, [dataT]);
 
   const ShowDataTrack = () => {
     return (
-      <div className="px-4 py-4  w-[90%]   h-full mx-auto  flex flex-col  gap-2">
+      <div className="px-4 py-4  w-[100%]   h-full mx-auto  flex flex-col  gap-2">
         <figure className="overflow-hidden w-full flex items-center justify-center rounded-md min-h-24">
           <img className="object-cover w-full" src={dataT?.album.images[0].url} />
         </figure>
@@ -63,7 +64,7 @@ const LeftSide: React.FC = () => {
           </p>
         </div>
         <p className="text-white text-[18px]">{dataT?.album.artists[0].name}</p>
-        <div className="w-full flex flex-col gap-1 p-4 rounded-md bg-[#1b345a]">
+        <div className="w-full flex flex-col gap-1 p-4 rounded-md bg-[#22395f9a]">
           <p className="text-white font-semibold">Acerca del artista</p>
           <img src={artist?.images[0].url} />
           <p className="font-bold text-white">{artist?.name}</p>
@@ -77,7 +78,7 @@ const LeftSide: React.FC = () => {
 
   const ShowDataEpisode = () => {
     return (
-      <div className="px-4 py-4  w-[90%]    mx-auto  flex flex-col  gap-3">
+      <div className="px-4 py-4  w-[100%]    mx-auto  flex flex-col  gap-3">
         <figure className="overflow-hidden w-full flex items-center justify-center rounded-md">
           <img className="object-cover w-full" src={dataE?.images[0].url} />
         </figure>
@@ -118,7 +119,7 @@ const LeftSide: React.FC = () => {
   return (
     <div
       className={
-        'w-[20vw] min-h-[90vh] max-h-[90vh] bg-darkPurple overflow-y-auto  overflow-x-hidden custom-scrollbar ' +
+        'w-[18vw] min-h-[90vh] max-h-[90vh] bg-darkPurple overflow-y-auto  overflow-x-hidden custom-scrollbar border-l-2 border-l-[#1a3050] ' +
         (isHovered ? 'modify' : '')
       }
       onMouseEnter={handleMouseEnter}

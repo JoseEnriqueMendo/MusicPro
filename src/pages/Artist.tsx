@@ -67,8 +67,8 @@ const Artist: React.FC = () => {
   return (
     <main className="min-h-[90vh] max-h-[90vh] w-full flex flex-row overflow-hidden">
       <BarSide element={3} />
-      <div className="w-[65vw] flex flex-col mt-10 px-12 overflow-y-auto overflow-x-hidden custom-scrollbar text-white gap-5">
-        <div>
+      <div className="w-[67vw] flex flex-col mt-10 px-12 overflow-y-auto overflow-x-hidden custom-scrollbar text-white gap-5">
+        <div className="">
           <Return route="home" />
           <ArtistBanner dataCard={topTracks} artist={artist} />
           <TrackListTop tracks={topTracks} />
