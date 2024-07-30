@@ -8,6 +8,7 @@ export default {
         white: '#FFFFFF',
         darkBlack: '#000000',
         darkPurple: '#162945',
+        lightPurple: '#1b345a',
         loadingColor: '#0C1C34',
       },
       keyframes: {

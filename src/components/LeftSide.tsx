@@ -78,7 +78,7 @@ const LeftSide: React.FC = () => {
 
   const ShowDataEpisode = () => {
     return (
-      <div className="px-4 py-4  w-[90%]    mx-auto  flex flex-col  gap-3">
+      <div className="px-4 py-4  w-[100%]    mx-auto  flex flex-col  gap-3">
         <figure className="overflow-hidden w-full flex items-center justify-center rounded-md">
           <img className="object-cover w-full" src={dataE?.images[0].url} />
         </figure>

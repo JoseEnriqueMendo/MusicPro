@@ -18,7 +18,7 @@ export const CardMusic: React.FC<{
 
   return (
     <div
-      className=" text-white flex flex-col gap-1 max-h-56 overflow-hidden cursor-pointer hover:bg-[#05208a] px-2 py-01 rounded-md relative"
+      className=" text-white flex flex-col gap-1 max-h-56 overflow-hidden cursor-pointer hover:bg-[#1b345a] p-2 rounded-md relative"
       onClick={() => {
         handleClick(id);
       }}
@@ -50,7 +50,7 @@ export const CardEpisode: React.FC<{
   const navigate = useNavigate();
   const name_proyect = import.meta.env.VITE_NAME_PAGE || '';
   return (
-    <div className=" text-white flex flex-row gap-8 px-4  max-h-36 items-center overflow-hidden  hover:bg-[#05208a]  rounded-md relative ">
+    <div className=" text-white flex flex-row gap-8 px-4  max-h-36 items-center overflow-hidden  hover:bg-[#1b345a]  rounded-md relative ">
       <img src={dataEpisode.images[0].url} className="h-4/5 rounded-lg object-cover" />
 
       <div className="flex flex-col h-4/5 gap-1 ">

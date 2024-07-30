@@ -20,7 +20,7 @@ export const RowTable: React.FC<{
   return (
     <tr
       key={idItem}
-      className="hover:bg-blue-900 text-left py-3"
+      className="hover:bg-lightPurple text-left py-3"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
@@ -66,7 +66,7 @@ export const AlbumTable: React.FC<{
   return (
     <tr
       key={idItem}
-      className="hover:bg-blue-900 text-left py-3"
+      className="hover:bg-lightPurple text-left py-3"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >

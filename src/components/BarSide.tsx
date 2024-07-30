@@ -17,7 +17,7 @@ export const BarSide: React.FC<{ element: number }> = ({ element }) => {
   const name_proyect = import.meta.env.VITE_NAME_PAGE || '';
 
   const goToPage = (link: string, numberItem: number) => {
-    if (numberItem === 0) return;
+    if (numberItem === 0 || link === '') return;
     navigate(`${name_proyect}/${link}`);
   };
 
