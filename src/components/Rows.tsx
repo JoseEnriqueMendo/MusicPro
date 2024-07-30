@@ -29,11 +29,7 @@ export const RowTable: React.FC<{
   return (
     <tr
       key={idItem}
-<<<<<<< HEAD
-      className="hover:bg-blue-900 text-left py-10"
-=======
       className="hover:bg-lightPurple text-left py-3"
->>>>>>> 6cd1610fbd9075149fc2a732750f6d939cd48740
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
