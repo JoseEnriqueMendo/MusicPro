@@ -1,10 +1,7 @@
 // utils/artistFormatter.ts
 import { SimplifiedArtistObject } from "../interface/miscellaneous";
-import { Artists } from "../interface/track";
 
-export const getArtistsNames = (
-  artists: SimplifiedArtistObject[] | Artists
-): string => {
+export const getArtistsNames = (artists: SimplifiedArtistObject[]): string => {
   console.log("Artists array received:", artists); // Verifica el contenido del array
 
   if (!artists || artists.length === 0) {

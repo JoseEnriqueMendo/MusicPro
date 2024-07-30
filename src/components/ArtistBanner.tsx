@@ -1,5 +1,5 @@
-import React from "react";
-import { TopTracks, ArtistObject } from "../interface/artists";
+import React, { useState } from "react";
+import { TopTracks, ArtistObject, albumItem } from "../interface/artists";
 import { MdOutlineVerified, MdOutlineWatchLater } from "react-icons/md";
 import { PiHeart, PiShareNetworkLight } from "react-icons/pi";
 
@@ -83,6 +83,65 @@ export const TrackListTop: React.FC<{
           ))}
         </tbody>
       </table>
+    </div>
+  );
+};
+
+export const AlbumsArtist: React.FC<{
+  album: albumItem[];
+}> = ({ album }) => {
+  const [filter, setFilter] = useState<string>("all"); // Estado del filtro
+
+  const handleFilterChange = (newFilter: string) => {
+    setFilter(newFilter);
+  };
+
+  const filteredAlbums = album.filter((album) => {
+    if (filter === "all") return true;
+    return album.album_group === filter;
+  });
+
+  console.log(filteredAlbums);
+
+  return (
+    <div className="w-full mt-8 flex flex-col">
+      <p className=" font-clashDisplay text-[22px] text-white font-bold">
+        Discografía
+      </p>
+      <div className="flex gap-4 mt-3">
+        <button
+          onClick={() => handleFilterChange("all")}
+          className={`px-4 py-2 ${
+            filter === "all" ? "bg-blue-600" : "bg-blue-800"
+          } rounded-lg`}
+        >
+          Todos
+        </button>
+        <button
+          onClick={() => handleFilterChange("album")}
+          className={`px-4 py-2 ${
+            filter === "album" ? "bg-blue-600" : "bg-blue-800"
+          } rounded-lg`}
+        >
+          Álbumes
+        </button>
+        <button
+          onClick={() => handleFilterChange("single")}
+          className={`px-4 py-2 ${
+            filter === "single" ? "bg-blue-600" : "bg-blue-800"
+          } rounded-lg`}
+        >
+          Singles
+        </button>
+        <button
+          onClick={() => handleFilterChange("compilation")}
+          className={`px-4 py-2 ${
+            filter === "compilation" ? "bg-blue-600" : "bg-blue-800"
+          } rounded-lg`}
+        >
+          Compilaciones
+        </button>
+      </div>
     </div>
   );
 };

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { ArtistObject, TopTracks } from "../interface/artists";
+import { ArtistObject, TopTracks, ArtistsAlbums } from "../interface/artists";
 
 const tokenSpotify = localStorage.getItem("token") || "";
 
@@ -30,6 +30,33 @@ const artistsService = {
         }
       );
       return response.data as TopTracks;
+    } catch (error) {
+      console.error("Error fetching tracks:", error);
+      return null;
+    }
+  },
+  getAlbumsArtists: async (
+    artistID: string,
+    limit: number,
+    offset: number
+  ): Promise<ArtistsAlbums | null> => {
+    const include_groups: string = "album,single,compilation";
+
+    try {
+      const responseAlbum = await axios.get(
+        `${urlBase}artists/${artistID}/albums`,
+        {
+          headers: {
+            Authorization: `Bearer ${tokenSpotify}`,
+          },
+          params: {
+            limit,
+            offset,
+            include_groups,
+          },
+        }
+      );
+      return responseAlbum.data as ArtistsAlbums;
     } catch (error) {
       console.error("Error fetching tracks:", error);
       return null;

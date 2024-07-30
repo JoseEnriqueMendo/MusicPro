@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { PiPlayCircleLight } from 'react-icons/pi';
-import useHover from '../utils/useHover';
-import { TopTracks } from '../interface/artists';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { PiPlayCircleLight } from "react-icons/pi";
+import useHover from "../utils/useHover";
+import { TopTracks } from "../interface/artists";
 
 export const RowTable: React.FC<{
   idItem: string;
@@ -13,14 +13,23 @@ export const RowTable: React.FC<{
   artistName: string;
   albumName: string;
   handleClick: (id: string, type: string) => void;
-}> = ({ idItem, indexItem, img, name, artistName, albumName, typeItem, handleClick }) => {
+}> = ({
+  idItem,
+  indexItem,
+  img,
+  name,
+  artistName,
+  albumName,
+  typeItem,
+  handleClick,
+}) => {
   const { handleMouseEnter, handleMouseLeave, isHovered } = useHover();
   const navigate = useNavigate();
-  const name_proyect = import.meta.env.VITE_NAME_PAGE || '';
+  const name_proyect = import.meta.env.VITE_NAME_PAGE || "";
   return (
     <tr
       key={idItem}
-      className="hover:bg-blue-900 text-left py-3"
+      className="hover:bg-blue-900 text-left py-10"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
@@ -29,7 +38,7 @@ export const RowTable: React.FC<{
           indexItem + 1
         ) : (
           <PiPlayCircleLight
-            size={'18px'}
+            size={"18px"}
             className="cursor-pointer"
             onClick={() => {
               handleClick(idItem, typeItem);
@@ -38,7 +47,7 @@ export const RowTable: React.FC<{
         )}
       </td>
       <td className="flex flex-row gap-4 font-openSans font-semibold text-lg  items-center mr-10 overflow-hidden py-3">
-        <img src={img} className="w-12 h-12 rounded-md object-cover" />{' '}
+        <img src={img} className="w-12 h-12 rounded-md object-cover" />{" "}
         <p
           className="hover:underline cursor-pointer"
           onClick={() => navigate(`${name_proyect}/${typeItem}/${idItem}`)}
@@ -75,7 +84,7 @@ export const AlbumTable: React.FC<{
           indexItem + 1
         ) : (
           <PiPlayCircleLight
-            size={'18px'}
+            size={"18px"}
             className="cursor-pointer"
             onClick={() => {
               handleClick(idItem);
