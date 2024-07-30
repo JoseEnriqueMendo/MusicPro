@@ -1,7 +1,7 @@
-import axios from "axios";
-import { ArtistObject, TopTracks } from "../interface/artists";
+import axios from 'axios';
+import { ArtistObject, TopTracks } from '../interface/artists';
 
-const tokenSpotify = localStorage.getItem("token") || "";
+const tokenSpotify = localStorage.getItem('token') || '';
 
 const urlBase = import.meta.env.VITE_SPOTIFY_URL;
 
@@ -15,23 +15,20 @@ const artistsService = {
       });
       return response.data as ArtistObject;
     } catch (error) {
-      console.error("Error fetching album:", error);
+      console.error('Error fetching album:', error);
       return null;
     }
   },
   getTopTracks: async (artistID: string): Promise<TopTracks | null> => {
     try {
-      const response = await axios.get(
-        `${urlBase}artists/${artistID}/top-tracks`,
-        {
-          headers: {
-            Authorization: `Bearer ${tokenSpotify}`,
-          },
-        }
-      );
+      const response = await axios.get(`${urlBase}artists/${artistID}/top-tracks`, {
+        headers: {
+          Authorization: `Bearer ${tokenSpotify}`,
+        },
+      });
       return response.data as TopTracks;
     } catch (error) {
-      console.error("Error fetching tracks:", error);
+      console.error('Error fetching tracks:', error);
       return null;
     }
   },

@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  idTrack: localStorage.getItem('idTrack') || '43DeSV93pJPT4lCZaWZ6b1',
+  idTrack: localStorage.getItem('idTrack') || '1pymWRCuZfCd0zdiBJo0Hj',
   type: localStorage.getItem('type') || 'track',
   isPlaying: false,
 };

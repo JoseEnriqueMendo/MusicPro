@@ -18,7 +18,9 @@ body,
 html {
   margin: 0;
   padding: 0;
-  background: linear-gradient(to right, #064bb5, rgba(4, 12, 24, 0.8));
+  /* background: linear-gradient(to right, #064bb5, rgba(4, 12, 24, 0.8)); */
+
+  background-color: #162945;
   min-height: 100vh;
   min-width: 100vw;
 }

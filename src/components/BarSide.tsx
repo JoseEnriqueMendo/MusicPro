@@ -31,8 +31,8 @@ export const BarSide: React.FC<{ element: number }> = ({ element }) => {
       <li
         className={
           'flex gap-3  w-ful items-center   ' +
-          (numberItem !== element ? '' : 'text-greenLime') +
-          (numberItem !== 0 ? ' cursor-pointer ' : '')
+          (numberItem !== element ? ' ' : 'text-greenLime hover:opacity-100') +
+          (numberItem !== 0 ? ' cursor-pointer  hover:opacity-80' : ' ')
         }
         onClick={() => {
           goToPage(linkTo, numberItem);
@@ -51,8 +51,12 @@ export const BarSide: React.FC<{ element: number }> = ({ element }) => {
   };
 
   return (
-    <div className="flex flex-col static w-[16vw] max-w-[16vw] h-[90vh] max-h-[90vh] font-openSans text-white bg-darkPurple overflow-hidden">
-      <img src={logo} className="w-3/4 mx-auto mt-5" />
+    <div className="flex flex-col static w-[16vw] max-w-[16vw] h-[90vh] max-h-[90vh] font-openSans text-white bg-darkPurple overflow-hidden border-r-2 border-r-[#1a3050]   ">
+      <img
+        src={logo}
+        onClick={() => navigate(name_proyect + '/home')}
+        className="w-3/4 mx-auto mt-5 cursor-pointer hover:opacity-85"
+      />
       <ul className=" flex flex-col gap-6 mt-10  max-w-[16vw]">
         <ItemBarside icon={<></>} title={'Menú Principal'} numberItem={0} linkTo="" />
         <ItemBarside
