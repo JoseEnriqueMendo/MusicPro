@@ -38,11 +38,11 @@ const PlaylistPage = () => {
           name={playlist?.name || ''}
           owner_name={playlist?.owner.display_name || ''}
           type="Playlist"
-          onhandleClick={() => alert('reproducir')}
+          onhandleClick={() => playTrack(playlist?.tracks.items[0].track.id || '', 'track')}
         />
 
         <div className="w-full">
-          <table>
+          <table className=" w-full">
             <thead>
               <tr className="border-b border-[#3566C7]">
                 <th className=" py-1">#</th>

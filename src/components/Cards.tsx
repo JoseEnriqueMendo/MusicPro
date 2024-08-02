@@ -46,11 +46,16 @@ export const CardMusic: React.FC<{
 export const CardEpisode: React.FC<{
   dataEpisode: Episode;
 }> = ({ dataEpisode }) => {
-  const { playTrack } = useTrack();
+  const { playTrack, idTrack } = useTrack();
   const navigate = useNavigate();
   const name_proyect = import.meta.env.VITE_NAME_PAGE || '';
   return (
-    <div className=" text-white flex flex-row gap-8 px-4  max-h-36 items-center overflow-hidden  hover:bg-[#1b345a]  rounded-md relative ">
+    <div
+      className={
+        ' text-white flex flex-row gap-8 px-4  max-h-36 items-center overflow-hidden  hover:bg-[#1b345a]  rounded-md relative ' +
+        (idTrack === dataEpisode.id ? 'bg-lightPurple' : '')
+      }
+    >
       <img src={dataEpisode.images[0].url} className="h-4/5 rounded-lg object-cover" />
 
       <div className="flex flex-col h-4/5 gap-1 ">

@@ -44,9 +44,9 @@ const LeftSide: React.FC = () => {
 
   useEffect(() => {
     if (dataT && dataT.artists.length > 0) {
+      console.log(dataT.artists[0].id);
       callArtist(dataT.artists[0].id);
     }
-    console.log(dataT?.artists);
   }, [dataT]);
 
   const ShowDataTrack = () => {

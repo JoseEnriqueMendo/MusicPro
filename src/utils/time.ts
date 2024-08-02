@@ -12,7 +12,7 @@ export const formatDurationExplicit = (durationMs: number): string => {
   const totalSeconds = Math.floor(durationMs / 1000);
   const minutes = Math.floor(totalSeconds / 60);
   const seconds = totalSeconds % 60;
-  return `${minutes} min ${seconds < 10 ? '0' : ''} ${seconds} s`;
+  return `${minutes} min ${seconds < 10 ? '0' : ''}${seconds} s`;
 };
 
 export const sumAndFormatDuration = (album: AlbumObject): string => {

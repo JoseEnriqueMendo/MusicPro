@@ -63,7 +63,7 @@ export const BarSide: React.FC<{ element: number }> = ({ element }) => {
           icon={<PiSquaresFour size={'30px'} />}
           title={'Inicio'}
           numberItem={1}
-          linkTo=""
+          linkTo="home"
         />
         <ItemBarside
           icon={<BsSoundwave size={'30px'} />}
