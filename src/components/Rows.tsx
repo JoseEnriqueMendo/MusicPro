@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { PiPlayCircleLight } from 'react-icons/pi';
 import useHover from '../utils/useHover';
-import { TopTracks } from '../interface/artists';
+// import { TopTracks } from '../interface/artists';
 import { useTrack } from '../hooks/trackHook';
 
 export const RowTable: React.FC<{
@@ -12,9 +12,22 @@ export const RowTable: React.FC<{
   img: string;
   name: string;
   artistName: string;
+  idArtist: string;
   albumName: string;
+  idAlbum: string;
   handleClick: (id: string, type: string) => void;
-}> = ({ idItem, indexItem, img, name, artistName, albumName, typeItem, handleClick }) => {
+}> = ({
+  idItem,
+  indexItem,
+  img,
+  name,
+  artistName,
+  idArtist,
+  albumName,
+  idAlbum,
+  typeItem,
+  handleClick,
+}) => {
   const { handleMouseEnter, handleMouseLeave, isHovered } = useHover();
   const navigate = useNavigate();
   const { idTrack } = useTrack();
@@ -22,13 +35,11 @@ export const RowTable: React.FC<{
   return (
     <tr
       key={idItem}
-      className={
-        'hover:bg-lightPurple text-left py-3 ' + (idTrack === idItem ? 'bg-lightPurple' : '')
-      }
+      className={'hover:bg-lightPurple  py-3 ' + (idTrack === idItem ? 'bg-lightPurple' : '')}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <td className="px-4 text-end py-3">
+      <td className="px-4  py-3">
         {!isHovered ? (
           indexItem + 1
         ) : (
@@ -41,8 +52,8 @@ export const RowTable: React.FC<{
           />
         )}
       </td>
-      <td className="flex flex-row gap-4 font-openSans font-semibold text-lg  items-center mr-10 overflow-hidden py-3 ">
-        <img src={img} className="w-12 h-12 rounded-md object-cover" />{' '}
+      <td className="flex flex-row gap-4 font-openSans font-semibold text-[16px] items-center mr-2 truncate overflow-hidden py-3 ">
+        <img src={img} className="w-11 h-11 rounded-md object-cover" />
         <p
           className="hover:underline cursor-pointer"
           onClick={() => navigate(`${name_proyect}/${typeItem}/${idItem}`)}
@@ -50,8 +61,22 @@ export const RowTable: React.FC<{
           {name}
         </p>
       </td>
-      <td className=" mr-5 text-lg py-3  pr-5  ">{artistName}</td>
-      <td className=" mr-5 text-lg py-3">{albumName}</td>
+      <td className=" mr-2 text-[16px] py-3  pr-5 ">
+        <a
+          className=" hover:underline cursor-pointer"
+          onClick={() => navigate(`${name_proyect}/artist/${idArtist}`)}
+        >
+          {artistName}
+        </a>
+      </td>
+      <td className="  text-[16px] py-3 hover:underline cursor-pointer">
+        <a
+          className=" hover:underline cursor-pointer"
+          onClick={() => navigate(`${name_proyect}/album/${idAlbum}`)}
+        >
+          {albumName}
+        </a>
+      </td>
     </tr>
   );
 };
@@ -62,11 +87,14 @@ export const AlbumTable: React.FC<{
   img: string;
   name: string;
   artistName: string;
+  idArtist: string;
   duration: string;
   handleClick: (id: string) => void;
-}> = ({ idItem, indexItem, img, name, duration, artistName, handleClick }) => {
+}> = ({ idItem, indexItem, img, name, duration, artistName, idArtist, handleClick }) => {
   const { handleMouseEnter, handleMouseLeave, isHovered } = useHover();
   const { idTrack } = useTrack();
+  const name_proyect = import.meta.env.VITE_NAME_PAGE || '';
+  const navigate = useNavigate();
 
   return (
     <tr
@@ -77,7 +105,7 @@ export const AlbumTable: React.FC<{
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <td className="px-4 text-end">
+      <td className="px-2 w-10 text-center  py-3 ">
         {!isHovered ? (
           indexItem + 1
         ) : (
@@ -90,12 +118,24 @@ export const AlbumTable: React.FC<{
           />
         )}
       </td>
-      <td className="flex flex-row gap-4 font-openSans font-semibold text-lg items-center mr-10 overflow-hidden">
-        <img src={img} className="w-12 h-12 rounded-md object-cover" />
-        <p className="truncate max-w-xs font-clashDisplay">{name}</p>
+      <td className="flex flex-row gap-4 font-openSans font-semibold text-[16px] items-center  overflow-hidden py-3 ">
+        <img src={img} className="w-11 h-11 rounded-md object-cover" />
+        <p
+          className="hover:underline cursor-pointer font-light"
+          onClick={() => navigate(`${name_proyect}/track/${idItem}`)}
+        >
+          {name}
+        </p>
       </td>
-      <td className="truncate  mr-5 text-lg font-clashDisplay">{artistName}</td>
-      <td className="truncate mr-5 text-lg font-clashDisplay">{duration}</td>
+      <td className="truncate   text-[16px] py-3  ">
+        <a
+          className=" hover:underline cursor-pointer"
+          onClick={() => navigate(`${name_proyect}/artist/${idArtist}`)}
+        >
+          {artistName}
+        </a>
+      </td>
+      <td className="truncate  text-[16px] py-3   ">{duration}</td>
     </tr>
   );
 };

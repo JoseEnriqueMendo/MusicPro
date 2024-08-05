@@ -1,5 +1,4 @@
 import axios from 'axios';
-const tokenSpotify = localStorage.getItem('token') || '';
 const urlBase = import.meta.env.VITE_SPOTIFY_URL;
 
 const playlistServices = {

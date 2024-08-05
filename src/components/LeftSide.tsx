@@ -9,8 +9,8 @@ import episodeServices from '../apis/episode';
 import artistsService from '../apis/artist';
 import { useNavigate } from 'react-router-dom';
 import { ArtistObject } from '../interface/artists';
+
 const LeftSide: React.FC = () => {
-  //   const [typeTrack, setTypeTrack] = useState('');
   const { idTrack, type } = useTrack();
   const [artist, setArtist] = useState<ArtistObject | null>(null);
   const [dataT, setDataT] = useState<Track>();
@@ -44,7 +44,7 @@ const LeftSide: React.FC = () => {
 
   useEffect(() => {
     if (dataT && dataT.artists.length > 0) {
-      console.log(dataT.artists[0].id);
+      // console.log(dataT.artists[0].id);
       callArtist(dataT.artists[0].id);
     }
   }, [dataT]);
@@ -119,7 +119,7 @@ const LeftSide: React.FC = () => {
   return (
     <div
       className={
-        'w-[18vw] min-h-[90vh] max-h-[90vh] bg-darkPurple overflow-y-auto  overflow-x-hidden custom-scrollbar border-l-2 border-l-[#1a3050] ' +
+        'w-[18vw]  max-lg:w-[25vw] min-h-[90vh]  max-md:hidden max-h-[90vh] bg-darkPurple overflow-y-auto  overflow-x-hidden custom-scrollbar border-l-2 border-l-[#1a3050] ' +
         (isHovered ? 'modify' : '')
       }
       onMouseEnter={handleMouseEnter}

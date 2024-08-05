@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+/* eslint-disable react-refresh/only-export-components */
+import React, { useState, useEffect, memo } from 'react';
 //import hooks
 import { useTrack } from '../hooks/trackHook';
 
@@ -7,7 +8,6 @@ const Footer: React.FC = () => {
   const [id, setId] = useState('');
   const [typeTrack, setTypeTrack] = useState('');
   const { idTrack, type } = useTrack();
-  //track/43DeSV93pJPT4lCZaWZ6b1 6x5Nva6cG8jSaOyq7isQNQ
 
   useEffect(() => {
     setId(idTrack);
@@ -16,8 +16,9 @@ const Footer: React.FC = () => {
   }, [idTrack]);
 
   return (
-    <div className="min-h-[10vh] max-h-[10vh] bg-gradient-to-r from-[#064BB5] to-[#040c18cd]  overflow-hidden bg-black ">
+    <div className="min-h-[10vh] max-h-[10vh] bg-[#162945] ">
       <iframe
+        key={`${typeTrack}-${id}`} // Forzar la actualización del iframe
         className="w-[100.5%] ml-[-6px] "
         title="Reproductor de Spotify"
         src={`${url_base}${typeTrack}/${id}`}
@@ -28,4 +29,4 @@ const Footer: React.FC = () => {
   );
 };
 
-export default Footer;
+export default memo(Footer);

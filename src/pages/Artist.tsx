@@ -1,21 +1,20 @@
-import { BarSide } from "../components/BarSide";
-import { useEffect, useState } from "react";
-import artistsService from "../apis/artist";
-import { ArtistObject } from "../interface/artists";
-import Return from "../components/Return";
-import { TopTracks, ArtistsAlbums, albumItem } from "../interface/artists";
-import ArtistBanner, {
-  TrackListTop,
-  AlbumsArtist,
-} from "../components/ArtistBanner";
-import tokenServices from "../apis/token";
-
+import { useEffect, useState } from 'react';
+import artistsService from '../apis/artist';
+import { ArtistObject } from '../interface/artists';
+import Return from '../components/Return';
+import { TopTracks, albumItem } from '../interface/artists';
+import ArtistBanner, { TrackListTop, AlbumsArtist } from '../components/ArtistBanner';
+import tokenServices from '../apis/token';
+import { useParams } from 'react-router-dom';
+import LayoutIntern from '../layout/LayoutIntern';
+import { useTrack } from '../hooks/trackHook';
 const Artist: React.FC = () => {
   const [artist, setArtist] = useState<ArtistObject | null>(null);
   const [topTracks, setTopTracks] = useState<TopTracks | null>(null);
   const [albums, setAlbums] = useState<albumItem[]>([]);
-  const artistID = "7AGSJihqYPhYy5QzMcwcQT";
-
+  const { id } = useParams();
+  const artistID = id || '7AGSJihqYPhYy5QzMcwcQT';
+  const { playTrack } = useTrack();
   useEffect(() => {
     const fetchArtistData = async () => {
       try {
@@ -28,7 +27,7 @@ const Artist: React.FC = () => {
         setArtist(artistResponse);
         setTopTracks(topTracksResponse);
       } catch (error) {
-        console.error("Error fetching artist data:", error);
+        console.error('Error fetching artist data:', error);
       }
     };
 
@@ -40,11 +39,7 @@ const Artist: React.FC = () => {
 
       while (hasMoreAlbums) {
         try {
-          const albumResponse = await artistsService.getAlbumsArtists(
-            artistID,
-            limit,
-            offset
-          );
+          const albumResponse = await artistsService.getAlbumsArtists(artistID, limit, offset);
           if (albumResponse && albumResponse.items.length > 0) {
             allAlbums = [...allAlbums, ...albumResponse.items];
             offset += limit;
@@ -52,7 +47,7 @@ const Artist: React.FC = () => {
             hasMoreAlbums = false;
           }
         } catch (error) {
-          console.error("Error fetching albums:", error);
+          console.error('Error fetching albums:', error);
           hasMoreAlbums = false;
         }
       }
@@ -60,22 +55,23 @@ const Artist: React.FC = () => {
     };
     fetchAllAlbums(artistID);
     fetchArtistData();
-    console.log(albums);
+    // console.log(albums);
     tokenServices.getToken();
   }, [artistID]);
 
   return (
-    <main className="min-h-[90vh] max-h-[90vh] w-full flex flex-row overflow-hidden">
-      <BarSide element={3} />
-      <div className="w-[67vw] flex flex-col mt-10 px-12 overflow-y-auto overflow-x-hidden custom-scrollbar text-white gap-5">
-        <div className="">
-          <Return route="home" />
-          <ArtistBanner dataCard={topTracks} artist={artist} />
-          <TrackListTop tracks={topTracks} />
-          <AlbumsArtist album={albums} />
-        </div>
+    <LayoutIntern idBarside={-1}>
+      <div className="flex flex-col gap-1">
+        <Return route="home" />
+        <ArtistBanner
+          dataCard={topTracks}
+          artist={artist}
+          onhandleClick={() => playTrack(topTracks?.tracks[0].id || '', 'track')}
+        />
+        <TrackListTop tracks={topTracks} />
+        <AlbumsArtist album={albums} />
       </div>
-    </main>
+    </LayoutIntern>
   );
 };
 

@@ -12,7 +12,7 @@ import EpisodePage from './pages/Episode';
 import { Provider } from 'react-redux';
 import { store } from './store/store';
 import tokenServices from './apis/token';
-import LayoutBase from './layout/layoutBase';
+import LayoutBase from './layout/LayoutBase';
 function App() {
   const name_proyect = import.meta.env.VITE_NAME_PAGE || '';
   const [tokenExist, settokenExist] = useState(!localStorage.getItem('token') ? false : true);
@@ -39,7 +39,7 @@ function App() {
         <LayoutBase>
           <Routes>
             <Route path={`${name_proyect}/home`} element={<Home />} />
-            <Route path={`${name_proyect}/artist`} element={<Artist />} />
+            <Route path={`${name_proyect}/artist/:id`} element={<Artist />} />
             <Route path={`${name_proyect}/playlist/:id`} element={<PlaylistPage />} />
             <Route path={`${name_proyect}/track/:id`} element={<TrackPage />} />
             <Route path={`${name_proyect}/show/:id`} element={<ShowPage />} />

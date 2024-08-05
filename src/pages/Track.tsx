@@ -1,16 +1,15 @@
 import { useEffect, useState } from 'react';
-import { BarSide } from '../components/BarSide';
-import { json, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import musicServices from '../apis/track';
 import { Track } from '../interface/track';
 import { TopTracks } from '../interface/artists';
 import artistsService from '../apis/artist';
-
 import { HeadBoardDefault } from '../components/HeadBoard';
 import Return from '../components/Return';
 import { useTrack } from '../hooks/trackHook';
 import { flipDate } from '../utils/time';
 import { RowTable } from '../components/Rows';
+import LayoutIntern from '../layout/LayoutIntern';
 
 const TrackPage = () => {
   const { id } = useParams();
@@ -39,9 +38,8 @@ const TrackPage = () => {
   }, [track]);
 
   return (
-    <main className="min-h-[90vh] max-h-[90vh] w-full   flex flex-row  overflow-hidden">
-      <BarSide element={-1} />
-      <div className="w-[67vw] mt-12 flex flex-col px-10 overflow-y-auto  overflow-x-hidden custom-scrollbar text-white gap-5">
+    <LayoutIntern idBarside={-1}>
+      <div className="flex flex-col gap-5">
         <Return route="home" />
         <HeadBoardDefault
           img={track?.album.images[0].url || ''}
@@ -51,19 +49,15 @@ const TrackPage = () => {
           type={'Canción'}
           onhandleClick={() => playTrack(id || '', 'track')}
         />
-
         <div className="w-full flex flex-col ">
           <p className=" opacity-50   text-[13px] font-openSans  line-clamp-5 text-ellipsis">
             {`Fecha de lanzamiento: ${flipDate(track?.album.release_date || '')}`}
           </p>
         </div>
         <div className="w-full">
-          <p className=" opacity-50   text-[15px] font-openSans  line-clamp-5 text-ellipsis"></p>
-          {`Canciones Populares de`}
-          <p className="font-clashDisplay  font-bold text-xl mt-1">
-            {track?.album.artists[0].name}
+          <p className=" -mt-2    text-[17px] font-openSans  line-clamp-5 text-ellipsis font-bold">
+            {`Canciones Populares de ${track?.album.artists[0].name}`}
           </p>
-
           <div className="w-full mt-2 ">
             <table className=" w-full">
               <thead>
@@ -86,6 +80,8 @@ const TrackPage = () => {
                     img={item.album.images[0].url}
                     handleClick={() => playTrack(item.id || '', 'track')}
                     key={item.id}
+                    idAlbum={item.album.id}
+                    idArtist={item.artists[0].id}
                   />
                 ))}
               </tbody>
@@ -93,7 +89,7 @@ const TrackPage = () => {
           </div>
         </div>
       </div>
-    </main>
+    </LayoutIntern>
   );
 };
 

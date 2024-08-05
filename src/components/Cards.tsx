@@ -56,7 +56,7 @@ export const CardEpisode: React.FC<{
         (idTrack === dataEpisode.id ? 'bg-lightPurple' : '')
       }
     >
-      <img src={dataEpisode.images[0].url} className="h-4/5 rounded-lg object-cover" />
+      <img src={dataEpisode.images[0].url} className=" w-32 rounded-lg object-cover" />
 
       <div className="flex flex-col h-4/5 gap-1 ">
         <p

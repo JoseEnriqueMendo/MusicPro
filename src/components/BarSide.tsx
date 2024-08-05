@@ -11,6 +11,7 @@ import { IoChatbubblesOutline } from 'react-icons/io5';
 import { FaUserFriends } from 'react-icons/fa';
 //import Imgs
 import logo from '/logo.svg';
+import cropped from '/cropped.svg';
 
 export const BarSide: React.FC<{ element: number }> = ({ element }) => {
   const navigate = useNavigate();
@@ -30,7 +31,7 @@ export const BarSide: React.FC<{ element: number }> = ({ element }) => {
     return (
       <li
         className={
-          'flex gap-3  w-ful items-center   ' +
+          'flex gap-3  w-full items-center  max-lg:gap-2 max-md:gap-1  ' +
           (numberItem !== element ? ' ' : 'text-greenLime hover:opacity-100') +
           (numberItem !== 0 ? ' cursor-pointer  hover:opacity-80' : ' ')
         }
@@ -45,19 +46,27 @@ export const BarSide: React.FC<{ element: number }> = ({ element }) => {
           }
         ></span>
         {icon}
-        <p className={numberItem === 0 ? 'text-[14px]' : 'text-[16px]'}>{title}</p>
+        <p className={'max-xl:hidden ' + (numberItem === 0 ? 'text-[14px]' : 'text-[16px]')}>
+          {title}
+        </p>
       </li>
     );
   };
 
   return (
-    <div className="flex flex-col static w-[16vw] max-w-[16vw] h-[90vh] max-h-[90vh] font-openSans text-white bg-darkPurple overflow-hidden border-r-2 border-r-[#1a3050]   ">
+    <div className="flex flex-col static w-[16vw] max-w-[16vw] max-xl:w-[80px]  h-[90vh] max-h-[90vh] font-openSans text-white bg-darkPurple overflow-hidden border-r-2 border-r-[#1a3050]   ">
       <img
         src={logo}
         onClick={() => navigate(name_proyect + '/home')}
-        className="w-3/4 mx-auto mt-5 cursor-pointer hover:opacity-85"
+        className="w-3/4 mx-auto mt-5 cursor-pointer hover:opacity-85 max-xl:hidden"
       />
-      <ul className=" flex flex-col gap-6 mt-10  max-w-[16vw]">
+      <img
+        src={cropped}
+        onClick={() => navigate(name_proyect + '/home')}
+        className="w-3/4 mx-auto mt-5 cursor-pointer hover:opacity-85 hidden max-xl:block"
+      />
+
+      <ul className=" flex flex-col gap-6 mt-10  max-w-[16vw] ">
         <ItemBarside icon={<></>} title={'Menú Principal'} numberItem={0} linkTo="" />
         <ItemBarside
           icon={<PiSquaresFour size={'30px'} />}

@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { AlbumObject } from '../interface/album';
 import albumService from '../apis/albums';
-import { BarSide } from '../components/BarSide';
 import Return from '../components/Return';
 import artistsService from '../apis/artist';
 import { ArtistObject } from '../interface/artists';
@@ -13,6 +12,7 @@ import { getArtistsNames } from '../utils/artists';
 import { useTrack } from '../hooks/trackHook';
 import { useParams } from 'react-router-dom';
 import tokenServices from '../apis/token';
+import LayoutIntern from '../layout/LayoutIntern';
 
 const Album = () => {
   const [album, setAlbum] = useState<AlbumObject | null>(null);
@@ -43,6 +43,7 @@ const Album = () => {
     };
     tokenServices.getToken();
     fetchAlbum();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -61,33 +62,22 @@ const Album = () => {
   }
 
   return (
-    <main className="min-h-[90vh] max-h-[90vh] w-full  flex flex-row  overflow-hidden">
-      <BarSide element={-1} />
-      <div className="w-[67vw] mt-12 flex flex-col px-10 overflow-y-auto  overflow-x-hidden custom-scrollbar text-white gap-5">
+    <LayoutIntern idBarside={-1}>
+      <div className="flex flex-col gap-5">
         <Return route="home" />
         <div className="w-full flex items-center gap-5">
-          {/* Imagen del álbum */}
-
           <img
             src={album?.images[0].url}
             className="w-[200px] h-[200px] rounded-sm object-cover hover:scale-105 transition-transform duration-300 shadow-lg"
             alt={album?.name}
           />
-
-          {/* Detalles del álbum y artista */}
           <div className="flex flex-col gap-2">
-            {/* Tipo de álbum */}
             <p className="font-clashDisplay text-base">
               {album?.album_type &&
                 album.album_type.charAt(0).toUpperCase() + album.album_type.slice(1)}
             </p>
-
-            {/* Nombre del álbum */}
-            <p className="font-clashDisplay text-5xl font-bold">{album?.name}</p>
-
-            {/* Detalles del artista y fecha de lanzamiento */}
+            <p className=" text-5xl font-bold">{album?.name}</p>
             <div className="flex items-center gap-3">
-              {/* Imagen del artista */}
               <img
                 src={artist?.images[0].url}
                 className="w-[35px] h-[35px] rounded-full object-cover"
@@ -101,7 +91,10 @@ const Album = () => {
           </div>
 
           <div className="flex items-center justify-end w-1/3 gap-3">
-            <button className="rounded-md text-darkBlack bg-greenLime px-4 py-3 font-clashDisplay text-[14px] font-semibold ">
+            <button
+              className="rounded-md text-darkBlack bg-greenLime px-4 py-3 font-clashDisplay text-[14px] font-semibold "
+              onClick={() => playTrack(album?.tracks.items[0].id || '', 'track')}
+            >
               Reproducir
             </button>
             <PiHeart
@@ -120,10 +113,10 @@ const Album = () => {
           <table className="w-full">
             <thead>
               <tr className="border-b border-[#3566C7]">
-                <th className=" py-1">#</th>
-                <th className="text-left py-3">Título</th>
-                <th className="text-left py-3">Artista</th>
-                <th className="text-left py-3">
+                <th className="py-1 ">#</th>
+                <th className="text-left py-1">Título</th>
+                <th className="text-left py-1">Artista</th>
+                <th className="text-left py-1">
                   <MdOutlineWatchLater size={16} />
                 </th>
               </tr>
@@ -133,6 +126,7 @@ const Album = () => {
                 <AlbumTable
                   key={track.id}
                   idItem={track.id}
+                  idArtist={track.artists[0].id}
                   indexItem={index}
                   img={album.images[0].url}
                   name={track.name}
@@ -145,7 +139,7 @@ const Album = () => {
           </table>
         </div>
       </div>
-    </main>
+    </LayoutIntern>
   );
 };
 

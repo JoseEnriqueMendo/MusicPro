@@ -2,15 +2,14 @@ import { useEffect, useState } from 'react';
 import playlistServices from '../apis/playlist';
 import { PlaylistFeatureOrCategory } from '../interface/playlist';
 import { CarouselPlaylistFeature, CarouselAlbumsFeature } from '../components/Carousel';
-import { BarSide } from '../components/BarSide';
-import useHover from '../utils/useHover';
 import albumService from '../apis/albums';
 import { NewReleases } from '../interface/album';
+import LayoutIntern from '../layout/LayoutIntern';
+import { InputSecundary } from '../components/Input';
 const Home = () => {
   const [playlistFeature, setPlaylistFeature] = useState<PlaylistFeatureOrCategory>();
   const [playlistCategory, setPlaylistCategory] = useState<PlaylistFeatureOrCategory[]>();
   const [newReleases, setNewReleases] = useState<NewReleases>();
-  const { handleMouseEnter, handleMouseLeave, isHovered } = useHover();
 
   const getNewReleases = async () => {
     const releases = await albumService.getNewReleases();
@@ -22,7 +21,6 @@ const Home = () => {
   };
 
   const handleClick = async () => {
-    // console.log(localStorage.getItem('token'));
     const result = await playlistServices.getByFeatures();
     setPlaylistFeature(result);
     setPlaylistCategory([
@@ -40,35 +38,28 @@ const Home = () => {
   }, []);
 
   return (
-    <main className="  min-h-[90vh] max-h-[90vh] w-full flex flex-row overflow-hidden ">
-      <BarSide element={1} />
-      <div
-        className={`bg-transparent w-[67vw] mt-12 flex flex-col px-10 overflow-y-auto overflow-x-hidden custom-scrollbar ${
-          isHovered ? 'modify' : ''
-        }`}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-      >
-        <section className="w-full">
-          {playlistFeature && (
-            <CarouselPlaylistFeature title={'Playlist para ti'} dataCard={playlistFeature} />
-          )}
-        </section>
+    <LayoutIntern idBarside={1}>
+      {/* <InputSecundary text="Buscar música, álbum, artista..." /> */}
 
-        {playlistCategory &&
-          playlistCategory.map((category, index) => (
-            <section className="w-full" key={index}>
-              <CarouselPlaylistFeature title={category.message} dataCard={category} />
-            </section>
-          ))}
+      <section className="w-full mt-5">
+        {playlistFeature && (
+          <CarouselPlaylistFeature title={'Playlist para ti'} dataCard={playlistFeature} />
+        )}
+      </section>
 
-        <section className="w-full">
-          {newReleases && (
-            <CarouselAlbumsFeature title={'Nuevos lanzamientos'} dataCard={newReleases} />
-          )}
-        </section>
-      </div>
-    </main>
+      {playlistCategory &&
+        playlistCategory.map((category, index) => (
+          <section className="w-full" key={index}>
+            <CarouselPlaylistFeature title={category.message} dataCard={category} />
+          </section>
+        ))}
+
+      <section className="w-full">
+        {newReleases && (
+          <CarouselAlbumsFeature title={'Nuevos lanzamientos'} dataCard={newReleases} />
+        )}
+      </section>
+    </LayoutIntern>
   );
 };
 

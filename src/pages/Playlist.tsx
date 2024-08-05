@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 //import components
-import { BarSide } from '../components/BarSide';
 import { RowTable } from '../components/Rows';
 import Return from '../components/Return';
 import { HeadBoardDefault } from '../components/HeadBoard';
@@ -9,6 +8,7 @@ import { HeadBoardDefault } from '../components/HeadBoard';
 import { Playlist } from '../interface/playlist';
 import playlistServices from '../apis/playlist';
 import { useTrack } from '../hooks/trackHook';
+import LayoutIntern from '../layout/LayoutIntern';
 
 const PlaylistPage = () => {
   const { id } = useParams();
@@ -28,9 +28,8 @@ const PlaylistPage = () => {
   }, []);
 
   return (
-    <main className="min-h-[90vh] max-h-[90vh] w-full   flex flex-row  overflow-hidden">
-      <BarSide element={-1} />
-      <div className="w-[67vw] mt-12 flex flex-col px-10 overflow-y-auto  overflow-x-hidden custom-scrollbar text-white gap-5">
+    <LayoutIntern idBarside={-1}>
+      <div className="flex flex-col gap-5">
         <Return route="home" />
         <HeadBoardDefault
           img={playlist?.images[0].url || ''}
@@ -57,6 +56,8 @@ const PlaylistPage = () => {
                   idItem={item.track.id}
                   typeItem={item.track.track ? 'track' : item.track.episode ? 'episode' : ''}
                   albumName={item.track.album.name}
+                  idAlbum={item.track.album.id}
+                  idArtist={item.track.artists[0].id}
                   artistName={item.track.artists[0].name}
                   name={item.track.name}
                   indexItem={index}
@@ -69,7 +70,7 @@ const PlaylistPage = () => {
           </table>
         </div>
       </div>
-    </main>
+    </LayoutIntern>
   );
 };
 

@@ -23,10 +23,11 @@ html {
   background-color: #162945;
   min-height: 100vh;
   min-width: 100vw;
+  overflow: hidden;
 }
 
 .custom-scrollbar::-webkit-scrollbar {
-  width: 10px;
+  width: 6px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-track {

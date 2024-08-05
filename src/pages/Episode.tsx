@@ -1,15 +1,12 @@
-//  BORRAR SI ES NECESARIO
-//
-//
-
 import { useState, useEffect } from 'react';
-import { BarSide } from '../components/BarSide';
 import { useParams } from 'react-router-dom';
 import { Episode } from '../interface/episode';
 import Return from '../components/Return';
 import { HeadBoardDefault } from '../components/HeadBoard';
 import { useTrack } from '../hooks/trackHook';
 import episodeServices from '../apis/episode';
+import { Input } from '../components/Input';
+import LayoutIntern from '../layout/LayoutIntern';
 const EpisodePage = () => {
   const { id } = useParams();
   const [episode, setEpisode] = useState<Episode>();
@@ -25,9 +22,8 @@ const EpisodePage = () => {
   }, []);
 
   return (
-    <main className="min-h-[90vh] max-h-[90vh] w-full   flex flex-row  overflow-hidden">
-      <BarSide element={-1} />
-      <div className="w-[67vw] mt-12 flex flex-col px-10 overflow-y-auto  overflow-x-hidden custom-scrollbar text-white gap-5">
+    <LayoutIntern idBarside={-1}>
+      <div className="flex flex-col gap-5">
         <Return route="home" />
         <HeadBoardDefault
           img={episode?.images[0].url || ''}
@@ -37,14 +33,14 @@ const EpisodePage = () => {
           type={'Episodio de podcast'}
           onhandleClick={() => playTrack(id || '', 'episode')}
         />
-
+        <Input text="Buscar música, álbum, artista..." />
         <div className="w-full">
           <p className=" opacity-50   text-[13px] font-openSans  line-clamp-5 text-ellipsis">
             {/* {`Fecha de lanzamiento: ${flipDate(track?.album.release_date || '')}`} */}
           </p>
         </div>
       </div>
-    </main>
+    </LayoutIntern>
   );
 };
 
