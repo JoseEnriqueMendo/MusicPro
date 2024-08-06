@@ -13,11 +13,12 @@ import Categories from './pages/Categories';
 import { Provider } from 'react-redux';
 import { store } from './store/store';
 import tokenServices from './apis/token';
-import LayoutBase from './layout/LayoutBase';
 import CategoriesPlaylist from './pages/CategoriePlaylist';
 import Tendency from './pages/Tendency';
 import ArtistShow from './pages/ArtistShow';
 import Search from './pages/Search';
+import LayoutBase from './layout/LayoutBase';
+
 function App() {
   const name_proyect = import.meta.env.VITE_NAME_PAGE || '';
   const [tokenExist, settokenExist] = useState(!localStorage.getItem('token') ? false : true);
