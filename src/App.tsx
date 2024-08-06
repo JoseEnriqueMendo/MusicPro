@@ -8,11 +8,16 @@ import Album from './pages/Album';
 import TrackPage from './pages/Track';
 import ShowPage from './pages/Show';
 import EpisodePage from './pages/Episode';
+import Categories from './pages/Categories';
 //import Components
 import { Provider } from 'react-redux';
 import { store } from './store/store';
 import tokenServices from './apis/token';
 import LayoutBase from './layout/LayoutBase';
+import CategoriesPlaylist from './pages/CategoriePlaylist';
+import Tendency from './pages/Tendency';
+import ArtistShow from './pages/ArtistShow';
+import Search from './pages/Search';
 function App() {
   const name_proyect = import.meta.env.VITE_NAME_PAGE || '';
   const [tokenExist, settokenExist] = useState(!localStorage.getItem('token') ? false : true);
@@ -39,8 +44,13 @@ function App() {
         <LayoutBase>
           <Routes>
             <Route path={`${name_proyect}/home`} element={<Home />} />
+            <Route path={`${name_proyect}/categories`} element={<Categories />} />
+            <Route path={`${name_proyect}/tendency`} element={<Tendency />} />
+            <Route path={`${name_proyect}/artists`} element={<ArtistShow />} />
             <Route path={`${name_proyect}/artist/:id`} element={<Artist />} />
+            <Route path={`${name_proyect}/search/:url_search`} element={<Search />} />
             <Route path={`${name_proyect}/playlist/:id`} element={<PlaylistPage />} />
+            <Route path={`${name_proyect}/categorie/:id`} element={<CategoriesPlaylist />} />
             <Route path={`${name_proyect}/track/:id`} element={<TrackPage />} />
             <Route path={`${name_proyect}/show/:id`} element={<ShowPage />} />
             <Route path={`${name_proyect}/episode/:id`} element={<EpisodePage />} />

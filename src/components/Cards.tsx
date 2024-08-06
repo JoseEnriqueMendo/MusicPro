@@ -41,7 +41,38 @@ export const CardMusic: React.FC<{
   );
 };
 
-//    navigate(`${name_proyect}/album/${id}`);
+export const CardPlaylistBasic: React.FC<{
+  url_img: string;
+  name: string;
+  id: string;
+  handleClick: (id: string) => void;
+}> = ({ url_img, name, id, handleClick }) => {
+  const { handleMouseEnter, handleMouseLeave, isHovered } = useHover();
+
+  return (
+    <div
+      className=" flex flex-col items-center gap-1 hover:opacity-80 cursor-pointer"
+      onClick={() => {
+        handleClick(id);
+      }}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
+      <div className="relative">
+        <img src={url_img} className="w-48 h-48 " />
+        <div
+          className={`bg-greenLime rounded-full  right-2 bottom-2 flex items-center justify-center p-3 absolute ${
+            isHovered ? 'visible' : 'invisible'
+          }`}
+        >
+          <FaPlay className="text-darkPurple" />
+        </div>
+      </div>
+
+      <p className=" font-bold">{name}</p>
+    </div>
+  );
+};
 
 export const CardEpisode: React.FC<{
   dataEpisode: Episode;

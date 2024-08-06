@@ -76,21 +76,21 @@ export const BarSide: React.FC<{ element: number }> = ({ element }) => {
         />
         <ItemBarside
           icon={<BsSoundwave size={'30px'} />}
-          title={'Albums'}
+          title={'Categorias'}
           numberItem={2}
-          linkTo="album"
+          linkTo="categories"
         />
         <ItemBarside
           icon={<GiPodium size={'28px'} />}
           title={'Artistas'}
           numberItem={3}
-          linkTo="artist"
+          linkTo="artists"
         />
         <ItemBarside
           icon={<GiSoundOn size={'30px'} />}
           title={'Tendencias'}
           numberItem={4}
-          linkTo=""
+          linkTo="tendency"
         />
         <ItemBarside
           icon={<GrFavorite size={'25px'} />}

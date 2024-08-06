@@ -6,6 +6,7 @@ import { PlaylistFeatureOrCategory } from '../interface/playlist';
 import { NewReleases } from '../interface/album';
 import { CardMusic } from './Cards';
 import { getArtistsNames } from '../utils/artists';
+import useHover from '../utils/useHover';
 
 export const CarouselPlaylistFeature: React.FC<{
   title: string;
@@ -180,6 +181,24 @@ export const CarouselAlbumsFeature: React.FC<{
             );
           })}
       </div>
+    </div>
+  );
+};
+
+export const CarouselDefault: React.FC<{
+  children: React.ReactNode;
+}> = ({ children }) => {
+  const { handleMouseEnter, handleMouseLeave, isHovered } = useHover();
+
+  return (
+    <div
+      className={`w-full grid overflow-y-hidden overflow-x-auto grid-flow-col gap-4  mt-5  custom-scrollbar pb-2 ${
+        isHovered ? 'modify' : ''
+      }`}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
+      {children}
     </div>
   );
 };

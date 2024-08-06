@@ -1,8 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { PiMagnifyingGlass } from 'react-icons/pi';
-
+import { useNavigate } from 'react-router-dom';
+import { textToURL } from '../utils/formater';
 export const Input: React.FC<{ text: string }> = ({ text }) => {
   const [searchBarVisible, setSearchBarVisible] = useState(false);
+  const [inputValue, setInputValue] = useState('');
+  const navigate = useNavigate();
+  const name_proyect = import.meta.env.VITE_NAME_PAGE || '';
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setInputValue(e.target.value);
+  };
+
+  const handleSearch = () => {
+    navigate(`${name_proyect}/search/${textToURL(inputValue)}`);
+  };
 
   const handleScroll = () => {
     const div = document.getElementById('childrenIntern');
@@ -31,10 +43,12 @@ export const Input: React.FC<{ text: string }> = ({ text }) => {
           className={
             'w-full rounded-md py-3 px-3 font-openSans font-bold text-opacity-50 text-xs '
           }
+          onChange={handleInputChange}
         />
         <PiMagnifyingGlass
           className="absolute right-3 font-bold top-2 cursor-pointer text-black hover:text-gray-500"
           size={'25px'}
+          onClick={handleSearch}
         />
       </div>
     </div>

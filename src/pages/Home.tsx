@@ -5,7 +5,6 @@ import { CarouselPlaylistFeature, CarouselAlbumsFeature } from '../components/Ca
 import albumService from '../apis/albums';
 import { NewReleases } from '../interface/album';
 import LayoutIntern from '../layout/LayoutIntern';
-import { InputSecundary } from '../components/Input';
 const Home = () => {
   const [playlistFeature, setPlaylistFeature] = useState<PlaylistFeatureOrCategory>();
   const [playlistCategory, setPlaylistCategory] = useState<PlaylistFeatureOrCategory[]>();
@@ -39,8 +38,6 @@ const Home = () => {
 
   return (
     <LayoutIntern idBarside={1}>
-      {/* <InputSecundary text="Buscar música, álbum, artista..." /> */}
-
       <section className="w-full mt-5">
         {playlistFeature && (
           <CarouselPlaylistFeature title={'Playlist para ti'} dataCard={playlistFeature} />

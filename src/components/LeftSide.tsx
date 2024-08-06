@@ -44,7 +44,6 @@ const LeftSide: React.FC = () => {
 
   useEffect(() => {
     if (dataT && dataT.artists.length > 0) {
-      // console.log(dataT.artists[0].id);
       callArtist(dataT.artists[0].id);
     }
   }, [dataT]);
@@ -52,8 +51,8 @@ const LeftSide: React.FC = () => {
   const ShowDataTrack = () => {
     return (
       <div className="px-4 py-4  w-[100%]   h-full mx-auto  flex flex-col  gap-2">
-        <figure className="overflow-hidden w-full flex items-center justify-center rounded-md min-h-24">
-          <img className="object-cover w-full" src={dataT?.album.images[0].url} />
+        <figure className="overflow-hidden w-full flex items-center justify-center rounded-md min-h-48">
+          <img className="object-cover w-full min-h-48 " src={dataT?.album.images[0].url} />
         </figure>
         <div className="w-full overflow-hidden min-h-8">
           <p
@@ -70,7 +69,7 @@ const LeftSide: React.FC = () => {
           <p className="font-bold text-white">{artist?.name}</p>
           {/* <p className="text-white font-semibold text-xs">Generos</p> */}
           <p className="text-white opacity-50 text-sm">{artist?.genres.join(' ')}</p>
-          <p className="text-white">{artist?.followers.total}</p>
+          {/* <p className="text-white">{artist?.followers.total}</p> */}
         </div>
       </div>
     );

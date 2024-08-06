@@ -16,9 +16,9 @@ const Footer: React.FC = () => {
   }, [idTrack]);
 
   return (
-    <div className="min-h-[10vh] max-h-[10vh] bg-[#162945] ">
+    <div className="min-h-[10vh] max-h-[10vh] bg-[#162945]  ">
       <iframe
-        key={`${typeTrack}-${id}`} // Forzar la actualización del iframe
+        key={`${typeTrack}-${id}`}
         className="w-[100.5%] ml-[-6px] "
         title="Reproductor de Spotify"
         src={`${url_base}${typeTrack}/${id}`}
