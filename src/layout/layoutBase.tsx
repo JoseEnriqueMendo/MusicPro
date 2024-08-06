@@ -15,7 +15,6 @@ const LayoutBase: React.FC<LayoutProps> = ({ children }) => {
         </main>
         <LeftSide></LeftSide>
       </div>
-
       <Footer />
     </div>
   );
