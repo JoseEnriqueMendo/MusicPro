@@ -40,6 +40,16 @@ const LeftSide: React.FC = () => {
     if (type === 'episode') {
       callEpisode(idTrack || '');
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    if (type === 'track') {
+      callTrack(idTrack || '');
+    }
+    if (type === 'episode') {
+      callEpisode(idTrack || '');
+    }
   }, [idTrack, type]);
 
   useEffect(() => {
@@ -118,7 +128,7 @@ const LeftSide: React.FC = () => {
   return (
     <div
       className={
-        'w-[18vw]  max-lg:w-[25vw] min-h-[90vh]  max-md:hidden max-h-[90vh] bg-darkPurple overflow-y-auto  overflow-x-hidden custom-scrollbar border-l-2 border-l-[#1a3050] ' +
+        'w-[18vw]  max-lg:w-[25vw] min-h-[90vh]  max-[900px]:hidden max-h-[90vh] bg-darkPurple overflow-y-auto  overflow-x-hidden custom-scrollbar border-l-2 border-l-[#1a3050] ' +
         (isHovered ? 'modify' : '')
       }
       onMouseEnter={handleMouseEnter}

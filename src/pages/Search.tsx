@@ -16,7 +16,6 @@ const ArtistShow = () => {
 
   const callSearch = async () => {
     const res = await searchServices.get(url_search || ' ', 10);
-    console.log(res);
     setSearchArray(res);
   };
 
@@ -29,12 +28,12 @@ const ArtistShow = () => {
 
   return (
     <LayoutIntern idBarside={-1}>
-      <section className="w-full flex flex-col gap-1">
+      <section className="w-full flex flex-col gap-1  overflow-hidden">
         <div className="flex flex-col ">
           <Return route="none" />
         </div>
         {hasItems(searchArray?.artists?.items) && (
-          <p className="text-white font-clashDisplay font-bold text-4xl w-full text-end pr-10">
+          <p className="text-white font-clashDisplay font-bold text-4xl w-full text-end pr-10 max-sm:pr-5">
             Artistas
           </p>
         )}
@@ -55,7 +54,7 @@ const ArtistShow = () => {
           ))}
         />
         {hasItems(searchArray?.albums?.items) && (
-          <p className="text-white font-clashDisplay font-bold text-4xl w-full text-start pr-10 mt-1">
+          <p className="text-white font-clashDisplay font-bold text-4xl w-full text-start pr-10 max-sm:pr-5 mt-1">
             Álbumes
           </p>
         )}
@@ -76,7 +75,7 @@ const ArtistShow = () => {
           ))}
         />
         {hasItems(searchArray?.playlists?.items) && (
-          <p className="text-white font-clashDisplay font-bold text-4xl w-full text-end pr-10 mt-1">
+          <p className="text-white font-clashDisplay font-bold text-4xl w-full text-end pr-10 max-sm:pr-5 mt-1">
             Playlist
           </p>
         )}
@@ -97,7 +96,7 @@ const ArtistShow = () => {
           ))}
         />
         {hasItems(searchArray?.tracks?.items) && (
-          <p className="text-white font-clashDisplay font-bold text-4xl w-full text-start pr-10 mt-1">
+          <p className="text-white font-clashDisplay font-bold text-4xl w-full text-start pr-10 max-sm:pr-5 mt-1">
             Canciones
           </p>
         )}
@@ -118,7 +117,7 @@ const ArtistShow = () => {
           ))}
         />
         {hasItems(searchArray?.episodes?.items) && (
-          <p className="text-white font-clashDisplay font-bold text-4xl w-full text-end pr-10 mt-1">
+          <p className="text-white font-clashDisplay font-bold text-4xl w-full text-end pr-10 max-sm:pr-5 mt-1">
             Episodios
           </p>
         )}
@@ -139,7 +138,7 @@ const ArtistShow = () => {
           ))}
         />
         {hasItems(searchArray?.shows?.items) && (
-          <p className="text-white font-clashDisplay font-bold text-4xl w-full text-start pr-10 mt-1">
+          <p className="text-white font-clashDisplay font-bold text-4xl w-full text-start pr-10 max-sm:pr-5 mt-1">
             Shows
           </p>
         )}

@@ -12,7 +12,7 @@ const LayoutIntern: React.FC<{ children: React.ReactNode; idBarside: number }> =
   return (
     <main className="min-h-[90vh] max-h-[90vh] w-full flex flex-row overflow-hidden text-white">
       <BarSide element={idBarside} />
-      <div className="bg-transparent w-[67vw] max-xl:w-[80vw]  max-md:w-[100vw]   flex flex-col px-5  ">
+      <div className="bg-transparent w-[67vw] max-xl:w-[80vw]  max-[900px]:w-[100vw]   flex flex-col px-5  ">
         <Input text="Buscar música, álbum, artista..." />
 
         <div

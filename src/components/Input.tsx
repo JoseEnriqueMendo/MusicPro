@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { PiMagnifyingGlass } from 'react-icons/pi';
 import { useNavigate } from 'react-router-dom';
 import { textToURL } from '../utils/formater';
+
 export const Input: React.FC<{ text: string }> = ({ text }) => {
   const [searchBarVisible, setSearchBarVisible] = useState(false);
   const [inputValue, setInputValue] = useState('');
@@ -11,9 +12,14 @@ export const Input: React.FC<{ text: string }> = ({ text }) => {
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value);
   };
-
   const handleSearch = () => {
     navigate(`${name_proyect}/search/${textToURL(inputValue)}`);
+  };
+
+  const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>): void => {
+    if (event.key === 'Enter') {
+      handleSearch();
+    }
   };
 
   const handleScroll = () => {
@@ -43,6 +49,7 @@ export const Input: React.FC<{ text: string }> = ({ text }) => {
           className={
             'w-full rounded-md py-3 px-3 font-openSans font-bold text-opacity-50 text-xs '
           }
+          onKeyDown={handleKeyPress}
           onChange={handleInputChange}
         />
         <PiMagnifyingGlass

@@ -54,7 +54,7 @@ export const BarSide: React.FC<{ element: number }> = ({ element }) => {
   };
 
   return (
-    <div className="flex flex-col static w-[16vw] max-w-[16vw] max-xl:w-[80px]  h-[90vh] max-h-[90vh] font-openSans text-white bg-darkPurple overflow-hidden border-r-2 border-r-[#1a3050]   ">
+    <div className="flex flex-col static w-[16vw] max-w-[16vw] max-xl:w-[80px] max-xl:min-w-[80px]   h-[90vh] max-h-[90vh] font-openSans text-white bg-darkPurple overflow-hidden border-r-2 border-r-[#1a3050]   ">
       <img
         src={logo}
         onClick={() => navigate(name_proyect + '/home')}

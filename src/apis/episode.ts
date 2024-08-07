@@ -10,7 +10,6 @@ const episodeServices = {
           Authorization: `Bearer ${tokenSpotify}`,
         },
       });
-      console.log(data.data);
       return data.data;
     } catch (error) {
       console.log(error);

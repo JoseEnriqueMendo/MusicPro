@@ -12,7 +12,6 @@ const ArtistShow = () => {
 
   const callCategories = async () => {
     const res = await searchServices.getArtistShow(48);
-    console.log(res);
     setArtistSearchArray(res);
   };
 
@@ -27,7 +26,7 @@ const ArtistShow = () => {
           <Return route="none" />
           <p className="text-white font-clashDisplay font-bold text-4xl">Artistas</p>
         </div>
-        <div className="grid grid-cols-4 grid-flow-row gap-5 mt-4">
+        <div className="grid grid-cols-4 grid-flow-row gap-5 mt-5 max-lg:grid-cols-3 max-sm:grid-cols-2 max-[500px]:grid-cols-1">
           {artistSearchArray?.artists.items.map((item) => {
             return (
               <div

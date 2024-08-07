@@ -192,7 +192,7 @@ export const CarouselDefault: React.FC<{
 
   return (
     <div
-      className={`w-full grid overflow-y-hidden overflow-x-auto grid-flow-col gap-4  mt-5  custom-scrollbar pb-2 ${
+      className={` max-w-[70vw] w-full   grid overflow-y-hidden overflow-x-auto grid-flow-col gap-4  mt-5  custom-scrollbar pb-2 ${
         isHovered ? 'modify' : ''
       }`}
       onMouseEnter={handleMouseEnter}

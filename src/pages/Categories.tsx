@@ -26,16 +26,19 @@ const Categories = () => {
           <Return route="none" />
           <p className="text-white font-clashDisplay font-bold text-4xl">Categorias</p>
         </div>
-        <div className="grid grid-cols-4 grid-flow-row gap-5 mt-4">
+        <div className="grid grid-cols-4 grid-flow-row gap-5 mt-5 max-lg:grid-cols-3 max-sm:grid-cols-2 max-[500px]:grid-cols-1 ">
           {categoriesArray?.categories.items.map((item) => {
             return (
               <div
-                className=" flex flex-col items-center gap-1 hover:opacity-80 cursor-pointer"
+                className=" flex flex-col items-center gap-1 hover:opacity-80 cursor-pointer text-center"
                 onClick={() => {
                   navigate(name_proyect + '/categorie/' + item.id);
                 }}
               >
-                <img src={item.icons[0].url} className="w-48 h-48" />
+                <img
+                  src={item.icons[0].url}
+                  className="w-48 h-48 max-[500px]:w-[250px] max-[500px]:h-[250px] "
+                />
                 <p className=" font-bold">{item.name}</p>
               </div>
             );

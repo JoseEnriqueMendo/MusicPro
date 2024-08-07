@@ -27,7 +27,7 @@ const CategoriesPlaylist = () => {
   };
 
   return (
-    <LayoutIntern idBarside={4}>
+    <LayoutIntern idBarside={-1}>
       <section className="w-full mt-2">
         <div className="flex flex-col justify-between ml-3  gap-2">
           <Return route="none" />
@@ -35,7 +35,7 @@ const CategoriesPlaylist = () => {
             {`Categoria: ${playlistCategory?.message || '...'}`}
           </p>
         </div>
-        <div className="grid grid-cols-4 grid-flow-row gap-5 mt-4">
+        <div className="grid grid-cols-4 grid-flow-row gap-5 mt-5 max-lg:grid-cols-3 max-sm:grid-cols-2 max-[500px]:grid-cols-1">
           {playlistCategory?.playlists.items.map((item) => {
             return (
               <CardPlaylistBasic

@@ -26,10 +26,7 @@ const ArtistBanner: React.FC<{
       <div className="relative z-10 flex flex-col text-white p-5 gap-y-2">
         <div className="flex flex-row items-center gap-x-1">
           <MdOutlineVerified color="#42A5F5" size={22} />
-          <p className="font-clashDisplay text-[16px]">
-            {'  '}
-            Artista verificado
-          </p>
+          <p className="font-clashDisplay text-[16px]">Artista verificado</p>
         </div>
         <p className="font-sans text-7xl font-bold">{artist?.name}</p>
         <p className="font-clashDisplay text-[16px]">
@@ -114,8 +111,6 @@ export const AlbumsArtist: React.FC<{
     if (filter === 'all') return true;
     return album.album_group === filter;
   });
-
-  console.log(filteredAlbums);
 
   return (
     <div className="w-full mt-8 flex flex-col">

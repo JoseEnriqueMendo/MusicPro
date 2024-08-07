@@ -25,7 +25,7 @@ export const CardMusic: React.FC<{
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <img src={url_img} className={'h-3/5 rounded-lg object-cover'} />
+      <img src={url_img} className={'h-3/5 rounded-lg object-cover min-h-36'} />
       <p className="font-bold text-[16px] font-openSans truncate">{name}</p>
       <p className="  opacity-50   text-[13px] font-openSans  line-clamp-2 text-ellipsis ">
         {abstract}
@@ -51,7 +51,7 @@ export const CardPlaylistBasic: React.FC<{
 
   return (
     <div
-      className=" flex flex-col items-center gap-1 hover:opacity-80 cursor-pointer"
+      className=" flex flex-col items-center gap-1 hover:opacity-80 cursor-pointer text-center"
       onClick={() => {
         handleClick(id);
       }}
@@ -59,7 +59,10 @@ export const CardPlaylistBasic: React.FC<{
       onMouseLeave={handleMouseLeave}
     >
       <div className="relative">
-        <img src={url_img} className="w-48 h-48 " />
+        <img
+          src={url_img}
+          className="w-48 h-48 max-[500px]:w-[250px] max-[500px]:h-[250px] "
+        />
         <div
           className={`bg-greenLime rounded-full  right-2 bottom-2 flex items-center justify-center p-3 absolute ${
             isHovered ? 'visible' : 'invisible'
