@@ -128,7 +128,7 @@ const LeftSide: React.FC = () => {
   return (
     <div
       className={
-        'w-[18vw]  max-lg:w-[25vw] min-h-[90vh]  max-[900px]:hidden max-h-[90vh] bg-darkPurple overflow-y-auto  overflow-x-hidden custom-scrollbar border-l-2 border-l-[#1a3050] ' +
+        'mi-w-[20vw]  w-[20vw]  min-h-[90vh]  max-[900px]:hidden   max-h-[90vh] bg-darkPurple overflow-y-auto  overflow-x-hidden custom-scrollbar border-l-2 border-l-[#1a3050] ' +
         (isHovered ? 'modify' : '')
       }
       onMouseEnter={handleMouseEnter}

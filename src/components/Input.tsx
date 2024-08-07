@@ -42,7 +42,12 @@ export const Input: React.FC<{ text: string }> = ({ text }) => {
   }, []);
 
   return (
-    <div className={' py-5 w-[99%]  sticky' + (searchBarVisible ? 'visible ' : 'invisible ')}>
+    <div
+      className={
+        ' py-5 w-[99%] max-sm:w-[95%]     sticky' +
+        (searchBarVisible ? 'visible ' : 'invisible ')
+      }
+    >
       <div className="w-full relative text-black">
         <input
           placeholder={text}

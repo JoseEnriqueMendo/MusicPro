@@ -28,7 +28,7 @@ const ArtistShow = () => {
 
   return (
     <LayoutIntern idBarside={-1}>
-      <section className="w-full flex flex-col gap-1  overflow-hidden">
+      <section className="w-full flex flex-col gap-1  overflow-hidden ">
         <div className="flex flex-col ">
           <Return route="none" />
         </div>
@@ -40,7 +40,7 @@ const ArtistShow = () => {
         <CarouselDefault
           children={searchArray?.artists?.items.map((item) => (
             <div
-              className="flex flex-col items-center text-center gap-1 hover:opacity-80 cursor-pointer max-w-40"
+              className="  flex flex-col items-center text-center gap-1 hover:opacity-80 cursor-pointer max-w-40"
               onClick={() => navigate(`${name_proyect}/artist/${item.id}`)}
               key={item.id}
             >
