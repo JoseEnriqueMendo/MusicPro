@@ -112,6 +112,8 @@ export const AlbumsArtist: React.FC<{
     return album.album_group === filter;
   });
 
+  console.log(filteredAlbums);
+
   return (
     <div className="w-full mt-8 flex flex-col">
       <p className=" font-clashDisplay text-[22px] text-white font-bold">Discografía</p>
