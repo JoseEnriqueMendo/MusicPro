@@ -5,7 +5,6 @@ import Return from '../components/Return';
 import { HeadBoardDefault } from '../components/HeadBoard';
 import { useTrack } from '../hooks/trackHook';
 import episodeServices from '../apis/episode';
-import { Input } from '../components/Input';
 import LayoutIntern from '../layout/LayoutIntern';
 const EpisodePage = () => {
   const { id } = useParams();
