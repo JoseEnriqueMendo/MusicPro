@@ -50,3 +50,31 @@ html {
 .modify::-webkit-scrollbar-thumb {
   background-color: rgba(128, 128, 128, 0.17);
 }
+
+@media not all and (min-height: 900px) {
+  .mediaHeight {
+    min-height: 90vh;
+    max-height: 90vh;
+  }
+}
+
+@media not all and (min-height: 750px) {
+  .mediaHeight {
+    min-height: 88vh;
+    max-height: 88vh;
+  }
+}
+
+@media not all and (min-height: 640px) {
+  .mediaHeight {
+    min-height: 86vh;
+    max-height: 86vh;
+  }
+}
+
+@media not all and (min-height: 370px) {
+  .mediaHeight {
+    min-height: 78vh;
+    max-height: 78vh;
+  }
+}

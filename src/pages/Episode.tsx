@@ -23,7 +23,7 @@ const EpisodePage = () => {
 
   return (
     <LayoutIntern idBarside={-1}>
-      <div className="flex flex-col gap-5">
+      <div className="flex flex-col gap-5 border-b-2 border-lightPurple">
         <Return route="home" />
         <HeadBoardDefault
           img={episode?.images[0].url || ''}
@@ -33,7 +33,6 @@ const EpisodePage = () => {
           type={'Episodio de podcast'}
           onhandleClick={() => playTrack(id || '', 'episode')}
         />
-        <Input text="Buscar música, álbum, artista..." />
         <div className="w-full">
           <p className=" opacity-50   text-[13px] font-openSans  line-clamp-5 text-ellipsis">
             {/* {`Fecha de lanzamiento: ${flipDate(track?.album.release_date || '')}`} */}

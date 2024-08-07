@@ -16,7 +16,7 @@ const Footer: React.FC = () => {
   }, [idTrack]);
 
   return (
-    <div className=" bg-[#162945] h-fit min-h-[25vh]">
+    <div className=" bg-[#162945]">
       <iframe
         key={`${typeTrack}-${id}`}
         className="w-[100.5%] ml-[-6px] "
