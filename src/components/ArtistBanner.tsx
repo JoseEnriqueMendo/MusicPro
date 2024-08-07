@@ -71,8 +71,8 @@ export const TrackListTop: React.FC<{
           <tr className="border-b border-[#3566C7]">
             <th className="py-1 ">#</th>
             <th className="text-left py-1">Título</th>
-            <th className="text-left py-1">Artista</th>
-            <th className="text-left py-1">
+            <th className="text-left py-1 max-[420px]:hidden">Artista</th>
+            <th className="text-left py-1 max-sm:hidden">
               <MdOutlineWatchLater size={16} />
             </th>
           </tr>
@@ -117,39 +117,43 @@ export const AlbumsArtist: React.FC<{
   return (
     <div className="w-full mt-8 flex flex-col">
       <p className=" font-clashDisplay text-[22px] text-white font-bold">Discografía</p>
-      <div className="flex gap-4 mt-3">
-        <button
-          onClick={() => handleFilterChange('all')}
-          className={`px-4 py-2 ${
-            filter === 'all' ? 'bg-blue-600' : 'bg-blue-800'
-          } rounded-lg`}
-        >
-          Todos
-        </button>
-        <button
-          onClick={() => handleFilterChange('album')}
-          className={`px-4 py-2 ${
-            filter === 'album' ? 'bg-blue-600' : 'bg-blue-800'
-          } rounded-lg`}
-        >
-          Álbumes
-        </button>
-        <button
-          onClick={() => handleFilterChange('single')}
-          className={`px-4 py-2 ${
-            filter === 'single' ? 'bg-blue-600' : 'bg-blue-800'
-          } rounded-lg`}
-        >
-          Singles
-        </button>
-        <button
-          onClick={() => handleFilterChange('compilation')}
-          className={`px-4 py-2 ${
-            filter === 'compilation' ? 'bg-blue-600' : 'bg-blue-800'
-          } rounded-lg`}
-        >
-          Compilaciones
-        </button>
+      <div className="flex gap-4 mt-3 flex-row max-sm:flex-col">
+        <div className="flex flex-row gap-4">
+          <button
+            onClick={() => handleFilterChange('all')}
+            className={`px-4 py-2 w-32 ${
+              filter === 'all' ? 'bg-blue-600' : 'bg-blue-800'
+            } rounded-lg`}
+          >
+            Todos
+          </button>
+          <button
+            onClick={() => handleFilterChange('album')}
+            className={`px-4 py-2 w-32 ${
+              filter === 'album' ? 'bg-blue-600' : 'bg-blue-800'
+            } rounded-lg`}
+          >
+            Álbumes
+          </button>
+        </div>
+        <div className="flex flex-row gap-4 ">
+          <button
+            onClick={() => handleFilterChange('single')}
+            className={`px-4 py-2 w-32 ${
+              filter === 'single' ? 'bg-blue-600' : 'bg-blue-800'
+            } rounded-lg`}
+          >
+            Singles
+          </button>
+          <button
+            onClick={() => handleFilterChange('compilation')}
+            className={`px-4 py-2 w-32 ${
+              filter === 'compilation' ? 'bg-blue-600' : 'bg-blue-800'
+            } rounded-lg`}
+          >
+            Compilaciones
+          </button>
+        </div>
       </div>
     </div>
   );

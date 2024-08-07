@@ -64,8 +64,8 @@ const TrackPage = () => {
                 <tr className="border-b border-[#3566C7] ">
                   <th className=" py-1 ">#</th>
                   <th className="text-left py-1">Canción</th>
-                  <th className="text-left py-1">Artista</th>
-                  <th className="text-left py-1">Album</th>
+                  <th className="text-left py-1 max-[420px]:hidden">Artista</th>
+                  <th className="text-left py-1 max-sm:hidden">Album</th>
                 </tr>
               </thead>
               <tbody>

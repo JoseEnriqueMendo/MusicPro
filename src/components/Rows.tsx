@@ -35,7 +35,9 @@ export const RowTable: React.FC<{
   return (
     <tr
       key={idItem}
-      className={'hover:bg-lightPurple  py-3 ' + (idTrack === idItem ? 'bg-lightPurple' : '')}
+      className={
+        'hover:bg-lightPurple  py-3 w-full ' + (idTrack === idItem ? 'bg-lightPurple' : '')
+      }
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
@@ -52,26 +54,26 @@ export const RowTable: React.FC<{
           />
         )}
       </td>
-      <td className="flex flex-row gap-4 font-openSans font-semibold text-[16px] items-center mr-2 truncate overflow-hidden py-3 ">
+      <td className="flex flex-row gap-4 font-openSans font-semibold text-[16px] items-center mr-5  overflow-hidden py-3 max-w-80 ">
         <img src={img} className="w-11 h-11 rounded-md object-cover" />
         <p
-          className="hover:underline cursor-pointer"
+          className="hover:underline cursor-pointer line-clamp-2 text-ellipsis"
           onClick={() => navigate(`${name_proyect}/${typeItem}/${idItem}`)}
         >
           {name}
         </p>
       </td>
-      <td className=" mr-2 text-[16px] py-3  pr-5 ">
+      <td className=" mr-2 text-[16px] py-3  pr-5  max-w-24 max-[420px]:hidden">
         <a
-          className=" hover:underline cursor-pointer"
+          className=" hover:underline cursor-pointer line-clamp-2 text-ellipsis"
           onClick={() => navigate(`${name_proyect}/artist/${idArtist}`)}
         >
           {artistName}
         </a>
       </td>
-      <td className="  text-[16px] py-3 hover:underline cursor-pointer">
+      <td className="  text-[16px] py-3 hover:underline cursor-pointer  overflow-hidden max-w-72 max-sm:hidden ">
         <a
-          className=" hover:underline cursor-pointer"
+          className=" hover:underline cursor-pointer line-clamp-2 text-ellipsis"
           onClick={() => navigate(`${name_proyect}/album/${idAlbum}`)}
         >
           {albumName}
@@ -118,24 +120,26 @@ export const AlbumTable: React.FC<{
           />
         )}
       </td>
-      <td className="flex flex-row gap-4 font-openSans font-semibold text-[16px] items-center  overflow-hidden py-3 ">
+      <td className="flex flex-row gap-4 font-openSans font-semibold text-[16px] items-center mr-5  overflow-hidden py-3 max-w-80 ">
         <img src={img} className="w-11 h-11 rounded-md object-cover" />
         <p
-          className="hover:underline cursor-pointer font-light"
+          className="hover:underline cursor-pointer font-light  line-clamp-2 text-ellipsis"
           onClick={() => navigate(`${name_proyect}/track/${idItem}`)}
         >
           {name}
         </p>
       </td>
-      <td className="truncate   text-[16px] py-3  ">
+      <td className=" text-[16px] py-3 hover:underline cursor-pointer  overflow-hidden max-w-24 max-[420px]:hidden  ">
         <a
-          className=" hover:underline cursor-pointer"
+          className=" hover:underline cursor-pointer line-clamp-2 text-ellipsis"
           onClick={() => navigate(`${name_proyect}/artist/${idArtist}`)}
         >
           {artistName}
         </a>
       </td>
-      <td className="truncate  text-[16px] py-3   ">{duration}</td>
+      <td className="truncate  text-[16px] py-3  line-clamp-2 text-ellipsis max-sm:hidden ">
+        {duration}
+      </td>
     </tr>
   );
 };

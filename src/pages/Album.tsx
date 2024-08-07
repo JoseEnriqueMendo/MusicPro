@@ -65,47 +65,49 @@ const Album = () => {
     <LayoutIntern idBarside={-1}>
       <div className="flex flex-col gap-5">
         <Return route="home" />
-        <div className="w-full flex items-center gap-5">
+        <div className="w-full flex items-center gap-5 max-md:flex-col">
           <img
             src={album?.images[0].url}
             className="w-[200px] h-[200px] rounded-sm object-cover hover:scale-105 transition-transform duration-300 shadow-lg"
             alt={album?.name}
           />
           <div className="flex flex-col gap-2">
-            <p className="font-clashDisplay text-base">
+            <p className="font-clashDisplay text-xs ">
               {album?.album_type &&
                 album.album_type.charAt(0).toUpperCase() + album.album_type.slice(1)}
             </p>
-            <p className=" text-5xl font-bold">{album?.name}</p>
+            <p className=" text-5xl font-bold max-xl:text-4xl">{album?.name}</p>
             <div className="flex items-center gap-3">
               <img
                 src={artist?.images[0].url}
                 className="w-[35px] h-[35px] rounded-full object-cover"
                 alt={artist?.name}
               />
-              <p className="font-clashDisplay text-base">{artist?.name}</p>
-              <p>{album?.release_date.substring(0, 4)}</p>
-              <p>{album?.tracks.total} canciones</p>
-              <p>{time} min</p>
+              <p className="font-clashDisplay text-xs ">{artist?.name}</p>
+              <p className="text-xs">{album?.release_date.substring(0, 4)}</p>
+              <p className="text-xs">{album?.tracks.total} canciones</p>
+              <p className="text-xs">{time} min</p>
             </div>
           </div>
 
-          <div className="flex items-center justify-end w-1/3 gap-3">
+          <div className="flex items-center justify-end w-1/3 gap-3 max-lg:flex-col max-md:flex-row  max-[400px]:flex-col">
             <button
-              className="rounded-md text-darkBlack bg-greenLime px-4 py-3 font-clashDisplay text-[14px] font-semibold "
+              className="rounded-md text-darkBlack bg-greenLime px-4 py-3 font-clashDisplay text-[14px] font-semibold hover:bg-lime-400"
               onClick={() => playTrack(album?.tracks.items[0].id || '', 'track')}
             >
               Reproducir
             </button>
-            <PiHeart
-              size={'40px'}
-              className="border-white rounded-full border p-1.5 cursor-pointer"
-            />
+            <div className="flex flex-row gap-3 max-lg:mt-2 ">
+              <PiHeart
+                size={'40px'}
+                className="border-white rounded-full border p-1.5 cursor-pointer"
+              />
 
-            <PiShareNetworkLight
-              size={'40px'}
-              className="border-white rounded-full border p-1.5 cursor-pointer"
-            />
+              <PiShareNetworkLight
+                size={'40px'}
+                className="border-white rounded-full border p-1.5 cursor-pointer"
+              />
+            </div>
           </div>
         </div>
 
@@ -114,9 +116,9 @@ const Album = () => {
             <thead>
               <tr className="border-b border-[#3566C7]">
                 <th className="py-1 ">#</th>
-                <th className="text-left py-1">Título</th>
-                <th className="text-left py-1">Artista</th>
-                <th className="text-left py-1">
+                <th className="text-left py-1 ">Título</th>
+                <th className="text-left py-1 max-[420px]:hidden">Artista</th>
+                <th className="text-left py-1 max-sm:hidden">
                   <MdOutlineWatchLater size={16} />
                 </th>
               </tr>

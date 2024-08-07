@@ -43,14 +43,14 @@ const PlaylistPage = () => {
         <div className="w-full">
           <table className=" w-full">
             <thead>
-              <tr className="border-b border-[#3566C7]">
-                <th className=" py-1">#</th>
-                <th className="text-left py-1">Canción</th>
-                <th className="text-left py-1">Artista</th>
-                <th className="text-left py-1">Album</th>
+              <tr className="border-b border-[#3566C7] ">
+                <th className=" py-1 ">#</th>
+                <th className="text-left py-1 ">Canción</th>
+                <th className="text-left py-1 max-[420px]:hidden">Artista</th>
+                <th className="text-left py-1 max-sm:hidden">Album</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody className="w-full">
               {playlist?.tracks.items.map((item, index) => (
                 <RowTable
                   idItem={item.track.id}

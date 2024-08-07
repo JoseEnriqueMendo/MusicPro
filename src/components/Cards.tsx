@@ -86,27 +86,30 @@ export const CardEpisode: React.FC<{
   return (
     <div
       className={
-        ' text-white flex flex-row gap-8 px-4  max-h-36 items-center overflow-hidden  hover:bg-[#1b345a]  rounded-md relative ' +
+        ' text-white flex flex-row gap-8 max-md:gap-2  px-4  max-h-36 items-center overflow-hidden  hover:bg-[#1b345a]  rounded-md relative ' +
         (idTrack === dataEpisode.id ? 'bg-lightPurple' : '')
       }
     >
-      <img src={dataEpisode.images[0].url} className=" w-32 rounded-lg object-cover" />
+      <img
+        src={dataEpisode.images[0].url}
+        className=" w-32 rounded-lg object-cover max-md:w-28"
+      />
 
       <div className="flex flex-col h-4/5 gap-1 ">
         <p
-          className="font-semibold cursor-pointer hover:underline w-fit"
+          className="font-semibold cursor-pointer hover:underline w-fit line-clamp-3 text-ellipsis"
           onClick={() => navigate(`${name_proyect}/episode/${dataEpisode.id}`)}
         >{`${dataEpisode.name}`}</p>
-        <p className="opacity-50   text-[12px] font-openSans  line-clamp-3 text-ellipsis">
+        <p className="opacity-50   text-[12px] font-openSans  line-clamp-3 text-ellipsis max-md:hidden">
           {`${dataEpisode.description}`}
         </p>
-        <span className="flex flex-row gap-3  text-[11px] font-openSans mt-1">
+        <span className="flex flex-row gap-3  text-[11px] font-openSans mt-1 ">
           <p>{`${flipDate(dataEpisode.release_date)}`}</p>
           <p>{`${formatDurationExplicit(dataEpisode.duration_ms)}`}</p>
         </span>
         <div
           className={
-            'bg-greenLime rounded-full  left-[95%] top-[68%] flex items-center justify-center p-2.5 absolute  cursor-pointer hover:p-[11px]'
+            'bg-greenLime rounded-full  left-[95%] top-[68%] flex items-center justify-center p-2.5 absolute  cursor-pointer hover:p-[11px] max-md:left-[90%] '
           }
           onClick={() => playTrack(dataEpisode.id, 'episode')}
         >

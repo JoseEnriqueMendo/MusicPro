@@ -78,7 +78,7 @@ export const HeadBoarBasic: React.FC<{
       />
       <div className="flex flex-col  justify-end  gap-2 overflow-hidden h-full">
         <p className="font-clashDisplay text-base ">{type}</p>
-        <p className="font-clashDisplay text-6xl font-bold">{name} </p>
+        <p className="font-clashDisplay text-6xl font-bold max-[500px]:text-4xl">{name} </p>
         <p className="font-clashDisplay text-xl mb-1">{`${owner_name}`}</p>
       </div>
     </div>

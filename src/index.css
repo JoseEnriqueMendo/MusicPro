@@ -60,8 +60,8 @@ html {
 
 @media not all and (min-height: 750px) {
   .mediaHeight {
-    min-height: 88vh;
-    max-height: 88vh;
+    min-height: 89vh;
+    max-height: 89vh;
   }
 }
 
