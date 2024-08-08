@@ -29,7 +29,7 @@ const TrackPage = () => {
     };
     callTrack(id || '');
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [id]);
 
   useEffect(() => {
     if (track && track?.album.artists.length > 0) {
