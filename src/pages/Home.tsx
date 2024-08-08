@@ -7,8 +7,13 @@ import { NewReleases } from '../interface/album';
 import LayoutIntern from '../layout/LayoutIntern';
 const Home = () => {
   const [playlistFeature, setPlaylistFeature] = useState<PlaylistFeatureOrCategory>();
-  const [playlistCategory, setPlaylistCategory] = useState<PlaylistFeatureOrCategory[]>();
+
   const [newReleases, setNewReleases] = useState<NewReleases>();
+  const [rockCategory, setRockCategory] = useState<PlaylistFeatureOrCategory>();
+  const [dinnerCategory, setDinnerCategory] = useState<PlaylistFeatureOrCategory>();
+  const [popCategory, setPopCategory] = useState<PlaylistFeatureOrCategory>();
+  const [metalCategory, setMetalCategory] = useState<PlaylistFeatureOrCategory>();
+  const [cumbiaCategory, setCumbiaCategory] = useState<PlaylistFeatureOrCategory>();
 
   const getNewReleases = async () => {
     const releases = await albumService.getNewReleases();
@@ -22,13 +27,12 @@ const Home = () => {
   const handleClick = async () => {
     const result = await playlistServices.getByFeatures();
     setPlaylistFeature(result);
-    setPlaylistCategory([
-      await playlistServices.getByCategory('rock'),
-      await playlistServices.getByCategory('dinner'),
-      await playlistServices.getByCategory('pop'),
-      await playlistServices.getByCategory('metal'),
-      await playlistServices.getByCategory('cumbia'),
-    ]);
+
+    setRockCategory(await playlistServices.getByCategory('rock'));
+    setDinnerCategory(await playlistServices.getByCategory('dinner'));
+    setPopCategory(await playlistServices.getByCategory('pop'));
+    setMetalCategory(await playlistServices.getByCategory('metal'));
+    setCumbiaCategory(await playlistServices.getByCategory('cumbia'));
   };
 
   useEffect(() => {
@@ -44,18 +48,41 @@ const Home = () => {
         )}
       </section>
 
-      {playlistCategory &&
-        playlistCategory.map((category, index) => (
-          <section className="w-full" key={index}>
-            <CarouselPlaylistFeature title={category.message} dataCard={category} />
-          </section>
-        ))}
-
       <section className="w-full">
         {newReleases && (
           <CarouselAlbumsFeature title={'Nuevos lanzamientos'} dataCard={newReleases} />
         )}
       </section>
+
+      {rockCategory && (
+        <section className="w-full">
+          <CarouselPlaylistFeature title={'Rock'} dataCard={rockCategory} />
+        </section>
+      )}
+
+      {dinnerCategory && (
+        <section className="w-full">
+          <CarouselPlaylistFeature title={'Dinner'} dataCard={dinnerCategory} />
+        </section>
+      )}
+
+      {popCategory && (
+        <section className="w-full">
+          <CarouselPlaylistFeature title={'Pop'} dataCard={popCategory} />
+        </section>
+      )}
+
+      {metalCategory && (
+        <section className="w-full">
+          <CarouselPlaylistFeature title={'Metal'} dataCard={metalCategory} />
+        </section>
+      )}
+
+      {cumbiaCategory && (
+        <section className="w-full">
+          <CarouselPlaylistFeature title={'Cumbia'} dataCard={cumbiaCategory} />
+        </section>
+      )}
     </LayoutIntern>
   );
 };

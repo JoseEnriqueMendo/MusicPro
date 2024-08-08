@@ -18,7 +18,7 @@ import Tendency from './pages/Tendency';
 import ArtistShow from './pages/ArtistShow';
 import Search from './pages/Search';
 import LayoutBase from './layout/LayoutBase';
-
+import { checkValidToken } from './utils/time';
 function App() {
   const name_proyect = import.meta.env.VITE_NAME_PAGE || '';
   const [tokenExist, settokenExist] = useState(!localStorage.getItem('token') ? false : true);
@@ -33,6 +33,8 @@ function App() {
   useEffect(() => {
     // validar si el token es valido
     callToken();
+
+    setInterval(checkValidToken, 60 * 1000);
   }, []);
 
   return !tokenExist ? (

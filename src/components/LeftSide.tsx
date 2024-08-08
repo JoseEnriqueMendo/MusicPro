@@ -18,6 +18,7 @@ const LeftSide: React.FC = () => {
   const navigate = useNavigate();
   const name_proyect = import.meta.env.VITE_NAME_PAGE || '';
   const { handleMouseEnter, handleMouseLeave, isHovered } = useHover();
+
   const callTrack = async (id: string) => {
     const res = await musicServices.get(id);
     setDataT(res);
